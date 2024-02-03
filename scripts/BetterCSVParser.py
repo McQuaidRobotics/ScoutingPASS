@@ -97,7 +97,7 @@ root.withdraw()
 
 file_path = filedialog.askopenfilename()
 rows = CSV()
-with open(file_path, newline='\n') as csvFile:
+with open(file_path) as csvFile:
     reader = csvStuff.reader(csvFile)
     for row in reader:
         rows.append(row)
@@ -105,21 +105,20 @@ with open(file_path, newline='\n') as csvFile:
 output_path = filedialog.askdirectory()
 with open(output_path + "/CycleTimes.csv", 'w', encoding='utf-8') as csvFile:
     timesCSV = isolateCycleTime(rows)
-    writer = csvStuff.writer(csvFile)
+    writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(timesCSV)
 
 with open(output_path + "/TeleopMisses.csv", 'w', encoding='utf-8') as csvFile:
     teleMissesCSV = isolateTeleMisses(rows)
-    writer = csvStuff.writer(csvFile)
+    writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(teleMissesCSV)
 
 with open(output_path + "/AutoMisses.csv", 'w', encoding='utf-8') as csvFile:
     autoMissesCSV = isolateAutoMissLocations(rows)
-    print(autoMissesCSV)
-    writer = csvStuff.writer(csvFile)
+    writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(autoMissesCSV)
 
 with open(output_path + "/AutoScores.csv", 'w', encoding='utf-8') as csvFile:
     autoScoresCSV = isolateAutoScores(rows)
-    writer = csvStuff.writer(csvFile)
+    writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(autoScoresCSV)
