@@ -1,4 +1,4 @@
-Match Level,Match #,Team #,Teleop Scoring Location
+Match Level,Match #,Team #,Location
 qm,1,108,111
 qm,1,108,45
 qm,1,108,181
@@ -2900,7 +2900,6 @@ qm,100,5410,193
 qm,100,5410,a
 qm,100,5410,120
 qm,100,5410,249
-Match Level,Match #,Team #,Teleop Miss Location
 qm,1,108,62
 qm,1,108,188
 qm,1,108,47
@@ -5814,7 +5813,6 @@ qm,100,5410,275
 qm,100,5410,27
 qm,100,5410,144
 qm,100,5410,218
-Match Level,Match #,Team #,Auto Miss Location
 qm,1,108,284
 qm,1,108,44
 qm,1,1744,237
@@ -6404,7 +6402,6 @@ qm,100,3932,64
 qm,100,3932,238
 qm,100,4388,243
 qm,100,5410,169
-Match Level,Match #,Team #,Auto Score Location
 qm,1,108,182
 qm,1,108,156
 qm,1,1523,209

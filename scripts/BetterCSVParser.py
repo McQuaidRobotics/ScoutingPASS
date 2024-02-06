@@ -96,9 +96,12 @@ def isolateAutoMissLocations(csv: CSV):
 
 def isolateLocations(outputPath: str) -> CSV:
     newCSV = CSV()
+    newCSV.append(['Match Level', 'Match #', 'Team #', 'Location'])
     file = open(outputPath + '/CycleTimes.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
+        if row[0] == 'Match Level':
+            continue
         newRow = []
         newRow.append(row[0])
         newRow.append(row[1])
@@ -109,16 +112,22 @@ def isolateLocations(outputPath: str) -> CSV:
     file = open(outputPath + '/TeleopMisses.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
+        if row[0] == 'Match Level':
+            continue
         newCSV.append(row)
     file.close()
     file = open(outputPath + '/AutoMisses.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
+        if row[0] == 'Match Level':
+            continue
         newCSV.append(row)
     file.close()
     file = open(outputPath + '/AutoScores.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
+        if row[0] == 'Match Level':
+            continue
         newCSV.append(row)
     file.close()
     return newCSV
