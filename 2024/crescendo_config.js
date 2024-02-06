@@ -66,7 +66,7 @@ var config_data = {
     },
     { name: "Autonomous", code: "a-div", title: "Autonomous", type: "divider" },
     { name: "Leave Starting Zone", code: "al", type: "bool" },
-    { name: "Amp Scores", code: "aas", type: "counter" },
+    { name: "Auto Amp Scores", code: "aas", type: "counter" },
     {
       name: "Auto Scoring Locations",
       code: "asg",
@@ -74,6 +74,7 @@ var config_data = {
       filename: "2024/field_image.png",
       showFlip: "false",
       showUndo: "true",
+      dimensions: "24 12",
       shape: "circle 12 black red true",
     },
     {
@@ -83,6 +84,7 @@ var config_data = {
       filename: "2024/field_image.png",
       showFlip: "false",
       showUndo: "true",
+      dimensions: "24 12",
       shape: "circle 12 black lightpink true",
     },
     { name: "Teleop", code: "t-div", title: "Teleoperated", type: "divider" },
@@ -100,8 +102,10 @@ var config_data = {
       filename: "2024/field_image.png",
       showFlip: "false",
       showUndo: "true",
+      dimensions: "24 12",
       shape: "circle 12 black red true",
       cycleTimer: "tct",
+      undoCounter: "tas",
     },
     {
       name: "Teleop Missing Locations",
@@ -110,10 +114,11 @@ var config_data = {
       filename: "2024/field_image.png",
       showFlip: "false",
       showUndo: "true",
+      dimensions: "24 12",
       shape: "circle 12 black lightpink true",
     },
     {
-      name: "Amp Scores",
+      name: "Teleop Amp Scores",
       code: "tas",
       type: "counter",
       cycleTimer: "tct",
@@ -148,7 +153,6 @@ var config_data = {
     { name: "Died/Immobilized", code: "die", type: "bool" },
     { name: "Tippy<br>(almost tipped over)", code: "tip", type: "bool" },
     { name: "Dropped Notes (>2)", code: "dn", type: "bool" },
-
     { name: "Yellow Card", code: "pyc", title: "Yellow Card", type: "bool" },
     { name: "Red Card", code: "prc", title: "Red Card", type: "bool" },
     {

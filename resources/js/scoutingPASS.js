@@ -411,6 +411,16 @@ function addClickableImage(table, idx, name, data) {
     }
   }
 
+  if (data.hasOwnProperty("undoCounter")) {
+    if (data.undoCounter != "") {
+      inp = document.createElement("input");
+      inp.setAttribute("hidden", "");
+      inp.setAttribute("id", "undoCounter_" + data.code);
+      inp.setAttribute("value", data.undoCounter);
+      cell.appendChild(inp);
+    }
+  }
+
   idx += 1;
   row = table.insertRow(idx);
   row.setAttribute("style", "display:none");
@@ -1365,7 +1375,7 @@ function newCycle(event) {
   let timerID = event.firstChild;
   let base = getIdBase(timerID.id);
   let inp = document.getElementById("input" + base);
-  let cycleTime = inp.value;
+  let cycleTime = parseFloat(inp.value);
   inp.value = 0;
   if (document.getElementById("status" + base).value === "stopped") { 
     document.getElementById("start" + base).click();
@@ -1464,13 +1474,24 @@ function undo(event) {
   changingXY = document.getElementById("XY" + getIdBase(undoID.id));
   changingInput = document.getElementById("input" + getIdBase(undoID.id));
   let cycleTimer = document.getElementById("cycleTimer" + getIdBase(undoID.id));
-  var tempValue = Array.from(JSON.parse(changingXY.value));
-  tempValue.pop();
-  changingXY.value = JSON.stringify(tempValue);
+  let undoCounter = document.getElementById("undoCounter" + getIdBase(undoID.id));
 
   tempValue = Array.from(JSON.parse(changingInput.value));
-  tempValue.pop();
+  const oldInput = tempValue.pop();
   changingInput.value = JSON.stringify(tempValue);
+
+  var tempValue = Array.from(JSON.parse(changingXY.value));
+  if (!isNaN(oldInput)) {
+    tempValue.pop();
+    changingXY.value = JSON.stringify(tempValue);
+  }
+  else {
+    if (undoCounter != null) {
+      document.getElementById("minus_" + undoCounter.value).click();
+    }
+  }
+
+  
   drawFields();
   if (cycleTimer != null) {
     document.getElementById("undo_" + cycleTimer.value).click();
