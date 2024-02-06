@@ -21,26 +21,28 @@ def findHeader(csv: CSV, header: str) -> int:
 
 def isolateCycleTime(csv: CSV):
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Cycle Time', 'Scoring Location']
+    headers = ['Match Level', 'Match #', 'Team #', 'Cycle Time', 'Teleop Scoring Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         times = csv[i][findHeader(csv, CYCLE_TIMES)].split(",")
         locations = csv[i][findHeader(csv, TELE_SCORE_LOCS)].split(",")
+        if(times[0] == '' or locations[0] == ''):
+            continue
         for i2 in range(len(times)):
             newRow: list[str] = []
             for header in headers:
                 if isInMain(csv, header):
                     newRow.append(csv[i][findHeader(csv, header)])
-                elif header == 'Cycle Time':
+                elif header == headers[3]:
                     newRow.append(times[i2])
-                elif header == 'Scoring Location':
+                elif header == headers[4]:
                     newRow.append(locations[i2])
             newCSV.append(newRow)
     return newCSV
 
 def isolateTeleMisses(csv: CSV): 
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Score Location']
+    headers = ['Match Level', 'Match #', 'Team #', 'Teleop Miss Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         locations = csv[i][findHeader(csv, TELE_MISS_LOCS)].split(',')
@@ -58,7 +60,7 @@ def isolateTeleMisses(csv: CSV):
 
 def isolateAutoScores(csv: CSV):
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Score Location']
+    headers = ['Match Level', 'Match #', 'Team #', 'Auto Score Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         locations = csv[i][findHeader(csv, AUTO_SCORE_LOCS)].split(',')
@@ -76,7 +78,7 @@ def isolateAutoScores(csv: CSV):
 
 def isolateAutoMissLocations(csv: CSV):
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Miss Location']
+    headers = ['Match Level', 'Match #', 'Team #', 'Auto Miss Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         locations = csv[i][findHeader(csv, AUTO_MISS_LOCS)].split(',')
