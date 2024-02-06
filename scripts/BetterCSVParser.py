@@ -94,6 +94,35 @@ def isolateAutoMissLocations(csv: CSV):
             newCSV.append(newRow)
     return newCSV
 
+def isolateLocations(outputPath: str) -> CSV:
+    newCSV = CSV()
+    file = open(outputPath + '/CycleTimes.csv', encoding='utf-8')
+    csvReader = csvStuff.reader(file)
+    for row in csvReader:
+        newRow = []
+        newRow.append(row[0])
+        newRow.append(row[1])
+        newRow.append(row[2])
+        newRow.append(row[4])
+        newCSV.append(newRow)
+    file.close()
+    file = open(outputPath + '/TeleopMisses.csv', encoding='utf-8')
+    csvReader = csvStuff.reader(file)
+    for row in csvReader:
+        newCSV.append(row)
+    file.close()
+    file = open(outputPath + '/AutoMisses.csv', encoding='utf-8')
+    csvReader = csvStuff.reader(file)
+    for row in csvReader:
+        newCSV.append(row)
+    file.close()
+    file = open(outputPath + '/AutoScores.csv', encoding='utf-8')
+    csvReader = csvStuff.reader(file)
+    for row in csvReader:
+        newCSV.append(row)
+    file.close()
+    return newCSV
+
 root = tk.Tk()
 root.withdraw()
 
@@ -124,3 +153,8 @@ with open(output_path + "/AutoScores.csv", 'w', encoding='utf-8') as csvFile:
     autoScoresCSV = isolateAutoScores(rows)
     writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(autoScoresCSV)
+
+with open(output_path + "/AllLocations.csv", 'w', encoding='utf-8') as csvFile:
+    locationsCSV = isolateLocations(output_path)
+    writer = csvStuff.writer(csvFile, lineterminator='\n')
+    writer.writerows(locationsCSV)
