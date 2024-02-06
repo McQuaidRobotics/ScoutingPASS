@@ -323,3 +323,12 @@ select {
   font-style: italic;
   padding-top: 5px;
 }
+
+/* 2024 SPECIFIC STYLES */
+#minus_tas {
+  display: none;
+}
+
+#plus_tas,#input_tas {
+  font-size: 40px;
+}
