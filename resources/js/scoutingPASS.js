@@ -1101,7 +1101,9 @@ function drawFields(name) {
     let shapeArr = shape.value.split(" ");
     var ctx = f.getContext("2d");
     const dimensions = document.getElementById("dimensions_" + code).value.split(" ");
-    const heightDimensionRatio = dimensions[0]/dimensions[1];
+    //const heightDimensionRatio = dimensions[0]/dimensions[1];
+    //HARDCODING THIS BECAUSE IMAGE RATIO DOESN'T MATCH DATA RATIO
+    const heightDimensionRatio = 2
     ctx.canvas.width = ctx.canvas.clientWidth;
     ctx.canvas.height = ctx.canvas.clientWidth/heightDimensionRatio;
     ctx.clearRect(0, 0, f.width, f.height);
