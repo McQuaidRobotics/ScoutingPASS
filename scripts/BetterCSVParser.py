@@ -9,6 +9,8 @@ CYCLE_TIMES = 'Cycle Timer'
 TELE_SCORE_LOCS = 'Teleop Scoring Locations'
 TELE_MISS_LOCS = 'Teleop Missing Locations'
 
+id: int = 1
+
 CSV = list[list[str]]
 
 isInMain = lambda mainCSV, h: h in mainCSV[0]
@@ -20,8 +22,9 @@ def findHeader(csv: CSV, header: str) -> int:
     return -1
 
 def isolateCycleTime(csv: CSV):
+    global id
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Cycle Time', 'Teleop Scoring Location']
+    headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Cycle Time', 'Teleop Scoring Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         times = csv[i][findHeader(csv, CYCLE_TIMES)].split(",")
@@ -33,16 +36,20 @@ def isolateCycleTime(csv: CSV):
             for header in headers:
                 if isInMain(csv, header):
                     newRow.append(csv[i][findHeader(csv, header)])
-                elif header == headers[3]:
-                    newRow.append(times[i2])
                 elif header == headers[4]:
+                    newRow.append(times[i2])
+                elif header == headers[5]:
                     newRow.append(locations[i2])
+                elif header == headers[0]:
+                    newRow.append(id)
+                    id += 1
             newCSV.append(newRow)
     return newCSV
 
-def isolateTeleMisses(csv: CSV): 
+def isolateTeleMisses(csv: CSV):
+    global id
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Teleop Miss Location']
+    headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Teleop Miss Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         locations = csv[i][findHeader(csv, TELE_MISS_LOCS)].split(',')
@@ -53,14 +60,18 @@ def isolateTeleMisses(csv: CSV):
             for header in headers:
                 if isInMain(csv, header):
                     newRow.append(csv[i][findHeader(csv, header)])
+                elif header == headers[0]:
+                    newRow.append(id)
+                    id += 1
                 else:
                     newRow.append(location)
             newCSV.append(newRow)
     return newCSV
 
 def isolateAutoScores(csv: CSV):
+    global id
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Auto Score Location']
+    headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Auto Score Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         locations = csv[i][findHeader(csv, AUTO_SCORE_LOCS)].split(',')
@@ -71,14 +82,18 @@ def isolateAutoScores(csv: CSV):
             for header in headers:
                 if isInMain(csv, header):
                     newRow.append(csv[i][findHeader(csv, header)])
+                elif header == headers[0]:
+                    newRow.append(id)
+                    id += 1
                 else:
                     newRow.append(location)
             newCSV.append(newRow)
     return newCSV
 
 def isolateAutoMissLocations(csv: CSV):
+    global id
     newCSV = CSV()
-    headers = ['Match Level', 'Match #', 'Team #', 'Auto Miss Location']
+    headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Auto Miss Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
         locations = csv[i][findHeader(csv, AUTO_MISS_LOCS)].split(',')
@@ -89,6 +104,9 @@ def isolateAutoMissLocations(csv: CSV):
             for header in headers:
                 if isInMain(csv, header):
                     newRow.append(csv[i][findHeader(csv, header)])
+                elif header == headers[0]:
+                    newRow.append(id)
+                    id += 1
                 else:
                     newRow.append(location)
             newCSV.append(newRow)
@@ -96,37 +114,38 @@ def isolateAutoMissLocations(csv: CSV):
 
 def isolateLocations(outputPath: str) -> CSV:
     newCSV = CSV()
-    newCSV.append(['Match Level', 'Match #', 'Team #', 'Location'])
+    newCSV.append(['ID', 'Match Level', 'Match #', 'Team #', 'Location'])
     file = open(outputPath + '/CycleTimes.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
-        if row[0] == 'Match Level':
+        if row[0] == 'ID':
             continue
         newRow = []
         newRow.append(row[0])
         newRow.append(row[1])
         newRow.append(row[2])
-        newRow.append(row[4])
+        newRow.append(row[3])
+        newRow.append(row[5])
         newCSV.append(newRow)
     file.close()
     file = open(outputPath + '/TeleopMisses.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
-        if row[0] == 'Match Level':
+        if row[0] == 'ID':
             continue
         newCSV.append(row)
     file.close()
     file = open(outputPath + '/AutoMisses.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
-        if row[0] == 'Match Level':
+        if row[0] == 'ID':
             continue
         newCSV.append(row)
     file.close()
     file = open(outputPath + '/AutoScores.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
-        if row[0] == 'Match Level':
+        if row[0] == 'ID':
             continue
         newCSV.append(row)
     file.close()
