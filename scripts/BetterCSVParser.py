@@ -3,7 +3,7 @@ from tkinter import filedialog
 import csv as csvStuff
 
 AUTO_SCORE_LOCS = 'Auto Scoring Locations'
-AUTO_MISS_LOCS = 'Auto Miss Locations'
+AUTO_PICKUP_LOCS = 'Auto Pickup Locations'
 
 CYCLE_TIMES = 'Cycle Timer'
 TELE_SCORE_LOCS = 'Teleop Scoring Locations'
@@ -90,13 +90,13 @@ def isolateAutoScores(csv: CSV):
             newCSV.append(newRow)
     return newCSV
 
-def isolateAutoMissLocations(csv: CSV):
+def isolateAutoPickupLocations(csv: CSV):
     global id
     newCSV = CSV()
-    headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Auto Miss Location']
+    headers = ['Match Level', 'Match #', 'Team #', 'Auto Pickup Location']
     newCSV.append(headers)
     for i in range(1, len(csv)):
-        locations = csv[i][findHeader(csv, AUTO_MISS_LOCS)].split(',')
+        locations = csv[i][findHeader(csv, AUTO_PICKUP_LOCS)].split(',')
         if locations[0] == '':
             continue
         for location in locations:
@@ -104,9 +104,6 @@ def isolateAutoMissLocations(csv: CSV):
             for header in headers:
                 if isInMain(csv, header):
                     newRow.append(csv[i][findHeader(csv, header)])
-                elif header == headers[0]:
-                    newRow.append(id)
-                    id += 1
                 else:
                     newRow.append(location)
             newCSV.append(newRow)
@@ -129,13 +126,6 @@ def isolateLocations(outputPath: str) -> CSV:
         newCSV.append(newRow)
     file.close()
     file = open(outputPath + '/TeleopMisses.csv', encoding='utf-8')
-    csvReader = csvStuff.reader(file)
-    for row in csvReader:
-        if row[0] == 'ID':
-            continue
-        newCSV.append(row)
-    file.close()
-    file = open(outputPath + '/AutoMisses.csv', encoding='utf-8')
     csvReader = csvStuff.reader(file)
     for row in csvReader:
         if row[0] == 'ID':
@@ -172,8 +162,8 @@ with open(output_path + "/TeleopMisses.csv", 'w', encoding='utf-8') as csvFile:
     writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(teleMissesCSV)
 
-with open(output_path + "/AutoMisses.csv", 'w', encoding='utf-8') as csvFile:
-    autoMissesCSV = isolateAutoMissLocations(rows)
+with open(output_path + "/AutoPickups.csv", 'w', encoding='utf-8') as csvFile:
+    autoMissesCSV = isolateAutoPickupLocations(rows)
     writer = csvStuff.writer(csvFile, lineterminator="\n")
     writer.writerows(autoMissesCSV)
 
