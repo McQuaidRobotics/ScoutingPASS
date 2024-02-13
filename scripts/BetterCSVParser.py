@@ -13,7 +13,47 @@ id: int = 1
 
 CSV = list[list[str]]
 
+class AllianceScores:
+    total: int
+    leaves: int
+    autoAmp: int
+    autoSpeaker: int
+    teleopAmp: int
+    teleopSpeakerScores: int
+    teleopSpeakerPoints: int
+    teleopAmpedSpeaker: int
+    teleopUnampedSpeaker: int
+    stage: int
+    harmony: int
+    trap: int
+    penalty: int
+
+    speakerCycles: int
+
+    def __init__(self) -> None:
+        self.total = 0
+        self.leaves = 0
+        self.autoAmp = 0
+        self.autoSpeaker = 0
+        self.teleopAmp = 0
+        self.teleopSpeakerScores = 0
+        self.teleopSpeakerPoints = 0
+        self.teleopAmpedSpeaker = 0
+        self.teleopUnampedSpeaker = 0
+        self.stage = 0
+        self.harmony = 0
+        self.trap = 0
+        self.penalty = 0
+
+        self.speakerCycles = 0
+    
+    def setInvalid(self):
+        self.teleopAmpedSpeaker = -1
+        self.teleopUnampedSpeaker = -1
+
 isInMain = lambda mainCSV, h: h in mainCSV[0]
+isBlueAlliance = lambda pos: pos == 1 or pos == 13 or pos == 35 \
+    or pos == 37 or pos == 49 or pos == 61
 
 def findHeader(csv: CSV, header: str) -> int:
     for i in range(len(csv[0])):
@@ -21,7 +61,7 @@ def findHeader(csv: CSV, header: str) -> int:
             return i
     return -1
 
-def isolateCycleTime(csv: CSV):
+def isolateCycleTime(csv: CSV) -> CSV:
     global id
     newCSV = CSV()
     headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Cycle Time', 'Teleop Scoring Location']
@@ -46,7 +86,7 @@ def isolateCycleTime(csv: CSV):
             newCSV.append(newRow)
     return newCSV
 
-def isolateTeleMisses(csv: CSV):
+def isolateTeleMisses(csv: CSV) -> CSV:
     global id
     newCSV = CSV()
     headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Teleop Miss Location']
@@ -68,7 +108,7 @@ def isolateTeleMisses(csv: CSV):
             newCSV.append(newRow)
     return newCSV
 
-def isolateAutoScores(csv: CSV):
+def isolateAutoScores(csv: CSV) -> CSV:
     global id
     newCSV = CSV()
     headers = ['ID', 'Match Level', 'Match #', 'Team #', 'Auto Score Location']
@@ -90,7 +130,7 @@ def isolateAutoScores(csv: CSV):
             newCSV.append(newRow)
     return newCSV
 
-def isolateAutoPickupLocations(csv: CSV):
+def isolateAutoPickupLocations(csv: CSV) -> CSV:
     global id
     newCSV = CSV()
     headers = ['Match Level', 'Match #', 'Team #', 'Auto Pickup Location']
@@ -141,6 +181,141 @@ def isolateLocations(outputPath: str) -> CSV:
     file.close()
     return newCSV
 
+def calcAmpedVsUnamped(totalCycles: int, speakerScore: int) -> list[int]:
+    for unamped in range(totalCycles + 1):
+        amped = totalCycles - unamped
+        if unamped * 2 + amped * 5 == speakerScore:
+            return [unamped * 2, amped * 5]
+    return None
+
+def allianceToList(scores: AllianceScores, matchLevel: str, matchNum: str, alliance: str) -> list[str]:
+    row = []
+    row.append(matchLevel)
+    row.append(matchNum)
+    row.append(alliance)
+    row.append(scores.total)
+    row.append(scores.leaves)
+    row.append(scores.autoAmp)
+    row.append(scores.autoSpeaker)
+    row.append(scores.teleopAmp)
+    row.append(scores.teleopSpeakerScores) # Testing: remove after
+    row.append(scores.teleopUnampedSpeaker)
+    row.append(scores.teleopAmpedSpeaker)
+    row.append(scores.stage)
+    row.append(scores.harmony)
+    row.append(scores.trap)
+    row.append(scores.penalty)
+
+    return row
+
+def isolateAllianceScores(csv: CSV) -> CSV:
+    newCSV = CSV()                                                                                                                                            # REMOVE LATER #
+    headers = ['Match Level', 'Match #', 'Alliance', 'Total Score', 'Leaves Start', 'Auto Amp Points', 'Auto Speaker Points', 'Teleop Amp Points', 'Speaker Cycles', 'Teleop Unamped Points', 'Teleop Amped Points', 'Stage Points', 'Harmony Points', 'Trap Points', 'Penalty Points']
+    newCSV.append(headers)
+    red = AllianceScores()
+    blue = AllianceScores()
+    prevMatch = 1
+    for i in range(1, len(csv)):
+        if int(csv[i][findHeader(csv, 'Match #')]) != prevMatch:
+            print("scores:",red.teleopSpeakerScores)
+            red.teleopSpeakerPoints = red.total - red.leaves - red.autoAmp - red.autoSpeaker - red.teleopAmp - red.stage - red.trap - red.penalty
+            print("points:",red.teleopSpeakerPoints)
+            blue.teleopSpeakerPoints = blue.total - blue.leaves - blue.autoAmp - blue.autoSpeaker - blue.teleopAmp - blue.stage - blue.trap - blue.penalty
+            scores: list[int] = None
+            harmony: int = 0
+            while scores == None and harmony < 4:
+                scores = calcAmpedVsUnamped(red.teleopSpeakerScores, red.teleopSpeakerPoints - harmony)
+                harmony += 2 if scores == None else 0
+            if scores == None:
+                red.setInvalid()
+            else:
+                red.teleopUnampedSpeaker = scores[0]
+                red.teleopAmpedSpeaker = scores[1]
+                red.harmony = harmony
+
+            scores = None
+            harmony = 0
+            while scores == None and harmony < 4:
+                scores = calcAmpedVsUnamped(blue.teleopSpeakerScores, blue.teleopSpeakerPoints - harmony)
+                harmony += 2 if scores == None else 0
+            if scores == None:
+                blue.setInvalid()
+            else:
+                blue.teleopUnampedSpeaker = scores[0]
+                blue.teleopAmpedSpeaker = scores[1]
+                blue.harmony = harmony
+
+            redRow = allianceToList(red, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'red')
+            blueRow = allianceToList(blue, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'blue')
+
+            newCSV.append(redRow)
+            newCSV.append(blueRow)
+
+            red = AllianceScores()
+            blue = AllianceScores()
+
+            prevMatch = int(csv[i][findHeader(csv, 'Match #')])
+        start = int(csv[i][findHeader(csv, 'Auto Start Location')])
+        alliance = blue if isBlueAlliance(start) else red
+
+        alliance.total = int(csv[i][findHeader(csv, 'Alliance Score')])
+        alliance.leaves += int(csv[i][findHeader(csv, 'Leave Starting Zone')]) * 2
+        alliance.autoAmp += int(csv[i][findHeader(csv, 'Auto Amp Scores')]) * 2
+        autoSpeaker = csv[i][findHeader(csv, 'Auto Scoring Locations')].split(',')
+        alliance.autoSpeaker += (len(autoSpeaker) if autoSpeaker[0] != '' else 0) * 5
+        teleopScores = csv[i][findHeader(csv, TELE_SCORE_LOCS)].split(',')
+        teleopSpeaker = 0
+        teleopAmp = 0
+        for loc in teleopScores:
+            if loc == 'a':
+                teleopAmp += 1
+            elif loc == '':
+                continue
+            else:
+                teleopSpeaker += 1
+        alliance.teleopAmp += teleopAmp
+        alliance.teleopSpeakerScores += teleopSpeaker
+        stageValue = csv[i][findHeader(csv, 'Final Status')]
+        alliance.stage += 4 if stageValue == 's' else 3 if stageValue == 'o' else 1 if stageValue == 'p' else 0
+        alliance.trap += int(csv[i][findHeader(csv, 'Note in Trap')]) * 5
+        alliance.penalty = int(csv[i][findHeader(csv, 'Alliance Penalty Score')])
+
+    red.teleopSpeakerPoints = red.total - red.leaves - red.autoAmp - red.autoSpeaker - red.teleopAmp - red.stage - red.trap - red.penalty
+    blue.teleopSpeakerPoints = blue.total - blue.leaves - blue.autoAmp - blue.autoSpeaker - blue.teleopAmp - blue.stage - blue.trap - blue.penalty
+    scores: list[int] = None
+    harmony: int = 0
+    while scores == None and harmony < 4:
+        scores = calcAmpedVsUnamped(red.teleopSpeakerScores, red.teleopSpeakerPoints - harmony)
+        harmony += 2 if scores == None else 0
+    if scores == None:
+        red.setInvalid()
+    else:
+        red.teleopUnampedSpeaker = scores[0]
+        red.teleopAmpedSpeaker = scores[1]
+        red.harmony = harmony
+
+    scores = None
+    harmony = 0
+    while scores == None and harmony < 4:
+        scores = calcAmpedVsUnamped(blue.teleopSpeakerScores, blue.teleopSpeakerPoints - harmony)
+        harmony += 2 if scores == None else 0
+    if scores == None:
+        blue.setInvalid()
+    else:
+        blue.teleopUnampedSpeaker = scores[0]
+        blue.teleopAmpedSpeaker = scores[1]
+        blue.harmony = harmony
+
+    redRow = allianceToList(red, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'red')
+    blueRow = allianceToList(blue, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'blue')
+
+    newCSV.append(redRow)
+    newCSV.append(blueRow)
+    return newCSV
+
+
+# 44 points out of 11 cycles
+
 root = tk.Tk()
 root.withdraw()
 
@@ -176,3 +351,8 @@ with open(output_path + "/AllLocations.csv", 'w', encoding='utf-8') as csvFile:
     locationsCSV = isolateLocations(output_path)
     writer = csvStuff.writer(csvFile, lineterminator='\n')
     writer.writerows(locationsCSV)
+
+with open(output_path + "/AllianceScores.csv", 'w', encoding='utf-8') as csvFile:
+    scoresCSV = isolateAllianceScores(rows)
+    writer = csvStuff.writer(csvFile, lineterminator='\n')
+    writer.writerows(scoresCSV)
