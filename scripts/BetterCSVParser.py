@@ -367,37 +367,23 @@ with open(file_path) as csvFile:
         rows.append(row)
 
 output_path = filedialog.askdirectory()
-with open(output_path + "/CycleTimes.csv", 'w', encoding='utf-8') as csvFile:
-    timesCSV = isolateCycleTime(rows)
-    writer = csvStuff.writer(csvFile, lineterminator="\n")
-    writer.writerows(timesCSV)
 
-with open(output_path + "/TeleopMisses.csv", 'w', encoding='utf-8') as csvFile:
-    teleMissesCSV = isolateTeleMisses(rows)
-    writer = csvStuff.writer(csvFile, lineterminator="\n")
-    writer.writerows(teleMissesCSV)
-
-with open(output_path + "/AutoPickups.csv", 'w', encoding='utf-8') as csvFile:
-    autoMissesCSV = isolateAutoPickupLocations(rows)
-    writer = csvStuff.writer(csvFile, lineterminator="\n")
-    writer.writerows(autoMissesCSV)
-
-with open(output_path + "/AutoScores.csv", 'w', encoding='utf-8') as csvFile:
-    autoScoresCSV = isolateAutoScores(rows)
-    writer = csvStuff.writer(csvFile, lineterminator="\n")
-    writer.writerows(autoScoresCSV)
-
-with open(output_path + "/AllLocations.csv", 'w', encoding='utf-8') as csvFile:
+with open(output_path + "/AllLocations.csv", 'w', encoding='utf-8') as csvFile: # All locations requires special handling
     locationsCSV = isolateLocations(output_path)
     writer = csvStuff.writer(csvFile, lineterminator='\n')
     writer.writerows(locationsCSV)
 
-with open(output_path + "/AllianceScores.csv", 'w', encoding='utf-8') as csvFile:
-    scoresCSV = isolateAllianceScores(rows)
+def writeOutputToFile(name: str, func):
+    global output_path
+    csvFile = open(output_path + "/" + name + ".csv", 'w', encoding='utf-8')
+    global rows
+    csv = func(rows)
     writer = csvStuff.writer(csvFile, lineterminator='\n')
-    writer.writerows(scoresCSV)
+    writer.writerows(csv)
 
-with open(output_path + "/DataWithAlliance.csv", 'w', encoding='utf-8') as csvFile:
-    dataCSV = addAllianceToData(rows)
-    writer = csvStuff.writer(csvFile, lineterminator='\n')
-    writer.writerows(dataCSV)
+writeOutputToFile("CycleTimes", isolateCycleTime)
+writeOutputToFile("TeleopMisses", isolateTeleMisses)
+writeOutputToFile("AutoPickups", isolateAutoPickupLocations)
+writeOutputToFile("AutoScores", isolateAutoScores)
+writeOutputToFile("AllianceScores", isolateAllianceScores)
+writeOutputToFile("DataWithAlliance", addAllianceToData)
