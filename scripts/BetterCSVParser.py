@@ -368,11 +368,6 @@ with open(file_path) as csvFile:
 
 output_path = filedialog.askdirectory()
 
-with open(output_path + "/AllLocations.csv", 'w', encoding='utf-8') as csvFile: # All locations requires special handling
-    locationsCSV = isolateLocations(output_path)
-    writer = csvStuff.writer(csvFile, lineterminator='\n')
-    writer.writerows(locationsCSV)
-
 def writeOutputToFile(name: str, func):
     global output_path
     csvFile = open(output_path + "/" + name + ".csv", 'w', encoding='utf-8')
@@ -387,3 +382,8 @@ writeOutputToFile("AutoPickups", isolateAutoPickupLocations)
 writeOutputToFile("AutoScores", isolateAutoScores)
 writeOutputToFile("AllianceScores", isolateAllianceScores)
 writeOutputToFile("DataWithAlliance", addAllianceToData)
+
+with open(output_path + "/AllLocations.csv", 'w', encoding='utf-8') as csvFile: # All locations requires special handling
+    locationsCSV = isolateLocations(output_path)
+    writer = csvStuff.writer(csvFile, lineterminator='\n')
+    writer.writerows(locationsCSV)
