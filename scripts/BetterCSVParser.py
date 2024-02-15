@@ -233,6 +233,24 @@ def allianceToList(scores: AllianceScores, matchLevel: str, matchNum: str, allia
 
     return row
 
+def allianceSpeakerPoints(alliance: AllianceScores) -> None:
+    alliance.teleopSpeakerPoints = alliance.total - alliance.leaves - alliance.autoAmp - alliance.autoSpeaker \
+            - alliance.teleopAmp - alliance.stage - alliance.trap - alliance.penalty
+    
+    scores = calcAmpedVsUnampedExact(alliance.teleopSpeakerScores, alliance.teleopSpeakerPoints, alliance.climbing)
+
+    if scores == None:
+        scores = calcAmpedVsUnampedClosest(alliance.teleopSpeakerScores, alliance.teleopSpeakerPoints, alliance.climbing)
+        alliance.difference = scores[0]
+        alliance.teleopUnampedSpeaker = scores[1][0]
+        alliance.teleopAmpedSpeaker = scores[1][1]
+        alliance.harmony = scores[1][2]
+    else:
+        alliance.difference = 0
+        alliance.teleopUnampedSpeaker = scores[0]
+        alliance.teleopAmpedSpeaker = scores[1]
+        alliance.harmony = scores[2]
+
 def isolateAllianceScores(csv: CSV) -> CSV:
     newCSV = CSV()
     headers = ['Match Level', 'Match #', 'Alliance', 'Total Score', 'Leaves Start', 'Auto Amp Points', 'Auto Speaker Points', 'Teleop Amp Points', 'Speaker Cycles', 'Teleop Unamped Points', 'Teleop Amped Points', 'Stage Points', 'Harmony Points', 'Difference', 'Trap Points', 'Penalty Points']
@@ -242,35 +260,8 @@ def isolateAllianceScores(csv: CSV) -> CSV:
     prevMatch = 1
     for i in range(1, len(csv)):
         if int(csv[i][findHeader(csv, 'Match #')]) != prevMatch:
-            red.teleopSpeakerPoints = red.total - red.leaves - red.autoAmp - red.autoSpeaker - red.teleopAmp - red.stage - red.trap - red.penalty
-            blue.teleopSpeakerPoints = blue.total - blue.leaves - blue.autoAmp - blue.autoSpeaker - blue.teleopAmp - blue.stage - blue.trap - blue.penalty
-            scores: list[int] = None
-            scores = calcAmpedVsUnampedExact(red.teleopSpeakerScores, red.teleopSpeakerPoints, red.climbing)
-            if scores == None:
-                close = calcAmpedVsUnampedClosest(red.teleopSpeakerScores, red.teleopSpeakerPoints, red.climbing)
-                red.difference = close[0]
-                red.teleopUnampedSpeaker = close[1][0]
-                red.teleopAmpedSpeaker = close[1][1]
-                red.harmony = close[1][2]
-            else:
-                red.difference = 0
-                red.teleopUnampedSpeaker = scores[0]
-                red.teleopAmpedSpeaker = scores[1]
-                red.harmony = scores[2]
-
-            scores = None
-            scores = calcAmpedVsUnampedExact(blue.teleopSpeakerScores, blue.teleopSpeakerPoints, blue.climbing)
-            if scores == None:
-                close = calcAmpedVsUnampedClosest(blue.teleopSpeakerScores, blue.teleopSpeakerPoints, blue.climbing)
-                blue.difference = close[0]
-                blue.teleopUnampedSpeaker = close[1][0]
-                blue.teleopAmpedSpeaker = close[1][1]
-                blue.harmony = close[1][2]
-            else:
-                blue.difference = 0
-                blue.teleopUnampedSpeaker = scores[0]
-                blue.teleopAmpedSpeaker = scores[1]
-                blue.harmony = scores[2]
+            allianceSpeakerPoints(red)
+            allianceSpeakerPoints(blue)
 
             redRow = allianceToList(red, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'red')
             blueRow = allianceToList(blue, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'blue')
@@ -308,35 +299,8 @@ def isolateAllianceScores(csv: CSV) -> CSV:
         alliance.trap += int(csv[i][findHeader(csv, 'Note in Trap')]) * 5
         alliance.penalty = int(csv[i][findHeader(csv, 'Alliance Penalty Score')])
 
-    red.teleopSpeakerPoints = red.total - red.leaves - red.autoAmp - red.autoSpeaker - red.teleopAmp - red.stage - red.trap - red.penalty
-    blue.teleopSpeakerPoints = blue.total - blue.leaves - blue.autoAmp - blue.autoSpeaker - blue.teleopAmp - blue.stage - blue.trap - blue.penalty
-    scores: list[int] = None
-    scores = calcAmpedVsUnampedExact(red.teleopSpeakerScores, red.teleopSpeakerPoints, red.climbing)
-    if scores == None:
-        close = calcAmpedVsUnampedClosest(red.teleopSpeakerScores, red.teleopSpeakerPoints, red.climbing)
-        red.difference = close[0]
-        red.teleopUnampedSpeaker = close[1][0]
-        red.teleopAmpedSpeaker = close[1][1]
-        red.harmony = close[1][2]
-    else:
-        red.difference = 0
-        red.teleopUnampedSpeaker = scores[0]
-        red.teleopAmpedSpeaker = scores[1]
-        red.harmony = scores[2]
-
-    scores = None
-    scores = calcAmpedVsUnampedExact(blue.teleopSpeakerScores, blue.teleopSpeakerPoints, blue.climbing)
-    if scores == None:
-        close = calcAmpedVsUnampedClosest(blue.teleopSpeakerScores, blue.teleopSpeakerPoints, blue.climbing)
-        blue.difference = close[0]
-        blue.teleopUnampedSpeaker = close[1][0]
-        blue.teleopAmpedSpeaker = close[1][1]
-        blue.harmony = close[1][2]
-    else:
-        blue.difference = 0
-        blue.teleopUnampedSpeaker = scores[0]
-        blue.teleopAmpedSpeaker = scores[1]
-        blue.harmony = scores[2]
+    allianceSpeakerPoints(red)
+    allianceSpeakerPoints(blue)
 
     redRow = allianceToList(red, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'red')
     blueRow = allianceToList(blue, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'blue')
@@ -368,9 +332,9 @@ with open(file_path) as csvFile:
 
 output_path = filedialog.askdirectory()
 
-def writeOutputToFile(name: str, func):
+def writeOutputToFile(fileName: str, func):
     global output_path
-    csvFile = open(output_path + "/" + name + ".csv", 'w', encoding='utf-8')
+    csvFile = open(output_path + "/" + fileName + ".csv", 'w', encoding='utf-8')
     global rows
     csv = func(rows)
     writer = csvStuff.writer(csvFile, lineterminator='\n')
