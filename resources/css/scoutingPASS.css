@@ -161,7 +161,8 @@ h2 {
 .clearForm,
 .submitForm,
 #displayButton,
-#copyButton {
+#copyButton,
+#pitscoutButton {
   font-family: Alexis;
   padding: 10px;
   background-color: yellow;

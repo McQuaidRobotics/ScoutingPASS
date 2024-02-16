@@ -148,13 +148,13 @@ var config_data = {
     { name: "Note in Trap", code: "nit", type: "bool" },
     { name: "Postmatch", code: "p-div", title: "Post Match", type: "divider" },
     {
-      name: "Alliance Score (with penalties)",
-      code: "pas",
+      name: "Alliance Speaker Score",
+      code: "pss",
       type: "number",
     },
     {
-      name: "Alliance Penalty Points",
-      code: "papp",
+      name: "Alliance Stage Score",
+      code: "pass",
       type: "number",
     },
     {
