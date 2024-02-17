@@ -128,7 +128,6 @@ var config_data = {
       valueInput: "a",
       valueAttribute: "tsg",
     },
-    { name: "Times Amplified", code: "tta", type: "counter" },
     { name: "Pickup From Floor", code: "tpf", type: "bool" },
     { name: "Pickup From Source", code: "tps", type: "bool" },
     { name: "Endgame", code: "e-div", title: "Endgame", type: "divider" },
