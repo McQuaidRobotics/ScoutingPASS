@@ -1,28 +1,34 @@
+var requiredFields = ["t", "wid", "len", "wei"];
 var config_data = 
 {
   title: "Scouting PASS 2024",
   dataFormat: "tsv",
-  page_title: "Crescendo",
+  page_title: "Crescendo Pit Scouting",
   pitConfig: "true",
   prematch: [
+    {
+      name: "Event",
+      code: "e",
+      type: "event",
+      defaultValue: "2024flwp",
+      required: "true",
+      disabled: "true",
+    },
     { "name": "Team Number",
       "code": "t",
-      "type": "number"
+      "type": "team"
     },
     { "name": "Width",
       "code": "wid",
       "type": "number",
-      "defaultValue": "0"
     },
     { "name": "Length",
       "code": "len",
       "type": "number",
-      "defaultValue": "0"
     },
     { "name": "Weight",
       "code": "wei",
       "type": "number",
-      "defaultValue": "0"
     },
     { "name": "Drivetrain",
       "code": "drv",

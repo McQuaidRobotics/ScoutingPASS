@@ -360,7 +360,7 @@ function addClickableImage(table, idx, name, data) {
   if (data.hasOwnProperty('allowableResponses')) {
     let responses = data.allowableResponses.split(' ').map(Number)
     console.log(responses)
-      inp.setAttribute("value", responses);
+    inp.setAttribute("value", responses);
   }
   cell.appendChild(inp);
 
@@ -741,10 +741,10 @@ function configure() {
     cell1.innerHTML = `Error parsing configuration file: ${err.message}<br><br>Use a tool like <a href="http://jsonlint.com/">http://jsonlint.com/</a> to help you debug your config file`;
     return -1;
   }
-  if(mydata.hasOwnProperty('dataFormat')) {
+  if (mydata.hasOwnProperty('dataFormat')) {
     dataFormat = mydata.dataFormat;
   }
-  
+
   if (mydata.hasOwnProperty('title')) {
     document.title = mydata.title;
   }
@@ -772,7 +772,7 @@ function configure() {
     // YN - Y or N
     // TF - T or F
     // 10 - 1 or 0
-    if (['YN','TF','10'].includes(mydata.checkboxAs)) {
+    if (['YN', 'TF', '10'].includes(mydata.checkboxAs)) {
       console.log("Setting checkboxAs to " + mydata.checkboxAs);
       checkboxAs = mydata.checkboxAs;
     } else {
@@ -828,18 +828,18 @@ function configure() {
   return 0;
 }
 
-function getRobot(){
+function getRobot() {
   return document.forms.scoutingForm.r.value;
 }
 
 
 function resetRobot() {
-for ( rb of document.getElementsByName('r')) { rb.checked = false };
+  for (rb of document.getElementsByName('r')) { rb.checked = false };
 }
 
 
-function getLevel(){
-return document.forms.scoutingForm.l.value
+function getLevel() {
+  return document.forms.scoutingForm.l.value
 }
 
 
@@ -853,7 +853,7 @@ function validateData() {
         rftitle = "Auto Start Position"
       } else {
         thisInputEl = thisRF instanceof RadioNodeList ? thisRF[0] : thisRF;
-        rftitle = thisInputEl.parentElement.parentElement.children[0].innerHTML.replace("&nbsp;","");
+        rftitle = thisInputEl.parentElement.parentElement.children[0].innerHTML.replace("&nbsp;", "");
       }
       errStr += rf + ": " + rftitle + "\n";
       ret = false;
@@ -871,7 +871,7 @@ function getData(dataFormat) {
   var fd = new FormData();
   var str = [];
 
-  switch(checkboxAs) {
+  switch (checkboxAs) {
     case 'TF':
       checkedChar = 'T';
       uncheckedChar = 'F';
@@ -898,7 +898,7 @@ function getData(dataFormat) {
     if (thisField.type == 'checkbox') {
       var thisFieldValue = thisField.checked ? checkedChar : uncheckedChar;
     } else {
-      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g,"-").replace('[', '').replace(']', '') : "";
+      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g, "-").replace('[', '').replace(']', '') : "";
     }
     fd.append(fieldname, thisFieldValue)
   })
@@ -937,11 +937,9 @@ function updateQRHeader() {
 
 function qr_regenerate() {
   // Validate required pre-match date (event, match, level, robot, scouter)
-  if (!pitScouting) {  
-    if (validateData() == false) {
-      // Don't allow a swipe until all required data is filled in
-      return false
-    }
+  if (validateData() == false) {
+    // Don't allow a swipe until all required data is filled in
+    return false
   }
 
   // Get data
@@ -972,11 +970,14 @@ function clearForm() {
     if (match == NaN) {
       document.getElementById("input_m").value = ""
     } else {
-      document.getElementById("input_m").value = match + 1
+      document.getElementById("input_m").value = match + 1;
+      document.getElementById("input_t").value =
+        getCurrentTeamNumberFromRobot().replace("frc", "");
+      onTeamnameChange();
     }
 
     // Robot
-    resetRobot();
+    //resetRobot();
   }
 
   // Clear XY coordinates
@@ -996,6 +997,7 @@ function clearForm() {
     if (code.substring(0, 2) == "l_") continue;
     if (code == "e") continue;
     if (code == "s") continue;
+    if (!pitScouting && code === "t") continue;
 
     if (e.className == "clickableImage") {
       e.value = "[]";
@@ -1040,7 +1042,8 @@ function clearForm() {
             }
           }
         } else {
-          e.value = ""
+          if (e.defaultValue != "") e.value = e.defaultValue;
+          else e.value = ""
         }
       } else if (e.type == "checkbox") {
         if (e.checked == true) {
@@ -1105,7 +1108,7 @@ function drawFields(name) {
     //HARDCODING THIS BECAUSE IMAGE RATIO DOESN'T MATCH DATA RATIO
     const heightDimensionRatio = 2
     ctx.canvas.width = ctx.canvas.clientWidth;
-    ctx.canvas.height = ctx.canvas.clientWidth/heightDimensionRatio;
+    ctx.canvas.height = ctx.canvas.clientWidth / heightDimensionRatio;
     ctx.clearRect(0, 0, f.width, f.height);
     ctx.drawImage(img, 0, 0, f.width, f.height);
 
@@ -1163,9 +1166,9 @@ function onFieldClick(event) {
   let coords = event.offsetX + "," + event.offsetY;
   let allowableResponses = document.getElementById("allowableResponses" + base).value;
 
-  if(allowableResponses != "none"){
+  if (allowableResponses != "none") {
     allowableResponsesList = allowableResponses.split(',').map(Number);
-    if (allowableResponsesList.indexOf(box)==-1){
+    if (allowableResponsesList.indexOf(box) == -1) {
       return;
     }
   }
@@ -1379,7 +1382,7 @@ function newCycle(event) {
   let inp = document.getElementById("input" + base);
   let cycleTime = parseFloat(inp.value);
   inp.value = 0;
-  if (document.getElementById("status" + base).value === "stopped") { 
+  if (document.getElementById("status" + base).value === "stopped") {
     document.getElementById("start" + base).click();
     if (cycleTime === 0)
       cycleTime = 0.1; //store the value to keep number of cycles in line with field image
@@ -1397,7 +1400,7 @@ function newCycle(event) {
       .replace(/\]/g, "")
       .replace(/,/g, ", ");
   }
-  
+
 }
 
 function undoCycle(event) {
@@ -1493,7 +1496,7 @@ function undo(event) {
     }
   }
 
-  
+
   drawFields();
   if (cycleTimer != null) {
     document.getElementById("undo_" + cycleTimer.value).click();
@@ -1511,13 +1514,13 @@ function flip(event) {
   drawFields();
 }
 
-function displayData(){
+function displayData() {
   document.getElementById('data').innerHTML = getData(dataFormat);
 }
 
-function copyData(){
+function copyData() {
   navigator.clipboard.writeText(getData(dataFormat));
-  document.getElementById('copyButton').setAttribute('value','Copied');
+  document.getElementById('copyButton').setAttribute('value', 'Copied');
 }
 
 window.onload = function () {

@@ -2,7 +2,7 @@ var requiredFields = ["e", "m", "l", "r", "s"];
 var config_data = {
   dataFormat: "tsv",
   title: "Scouting PASS 2024",
-  page_title: "Crescendo",
+  page_title: "Crescendo 3173",
   checkboxAs: "10",
   prematch: [
     {
@@ -19,6 +19,7 @@ var config_data = {
       type: "event",
       defaultValue: "2023tnkn",
       required: "true",
+      disabled: "true",
     },
     {
       name: "Match Level",
