@@ -33,7 +33,8 @@ def populateAvgs(source: CSV):
                     if cycles[0] == '':
                         continue
                     for cycle in cycles:
-                        times.append(float(cycle))
+                        if float(cycle) > 3:
+                            times.append(float(cycle))
             time_avgs[team] = np.average(times)
 
 def calcScore(source: CSV, matchStart: int, matchNum: int, bot: str) -> float:
