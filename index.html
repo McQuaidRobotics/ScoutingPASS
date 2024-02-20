@@ -11,9 +11,9 @@
     <script src="resources/js/easy.qrcode.min.js"></script>
     <script src="resources/js/TBAInterface.js"></script>
     <script src="resources/js/googleSheets.js"></script>
-    <script src="resources/js/scoutingPASS.js"></script>
-    <script src="2024/crescendo_config.js"></script>
-    <link rel="stylesheet" href="resources/css/scoutingPASS.css" />
+    <script src="{{ 'resources/js/scoutingPASS.js' | relative_url }}?{{ site.time | date: '%s%N' }}"></script>
+    <script src="{{ '2024/crescendo_config.js' | relative_url }}?{{ site.time | date: '%s%N' }}"></script>
+    <link href="{{ 'resources/css/scoutingPASS.css' | relative_url }}?{{ site.time | date: '%s%N' }}" rel="stylesheet">
     <link rel="manifest" href="manifest.json" />
     <script>
     // PWA Support.
