@@ -56,8 +56,7 @@ class AllianceScores:
         self.difference = 0
 
 isInMain = lambda mainCSV, h: h in mainCSV[0]
-isBlueAlliance = lambda pos: pos == 1 or pos == 13 or pos == 35 \
-    or pos == 37 or pos == 49 or pos == 61
+isBlueAlliance = lambda pos: pos[0] == 'b'
 
 def findHeader(csv: CSV, header: str) -> int:
     for i in range(len(csv[0])):
@@ -250,7 +249,7 @@ def isolateAllianceScores(csv: CSV) -> CSV:
     newCSV.append(headers)
     red = AllianceScores()
     blue = AllianceScores()
-    prevMatch = 1
+    prevMatch = prevMatch = int(csv[1][findHeader(csv, 'Match #')])
     for i in range(1, len(csv)):
         if int(csv[i][findHeader(csv, 'Match #')]) != prevMatch:
             allianceScores(red)
@@ -266,7 +265,7 @@ def isolateAllianceScores(csv: CSV) -> CSV:
             blue = AllianceScores()
 
             prevMatch = int(csv[i][findHeader(csv, 'Match #')])
-        start = int(csv[i][findHeader(csv, 'Auto Start Location')])
+        start = csv[i][findHeader(csv, 'Robot')]
         alliance = blue if isBlueAlliance(start) else red
 
         alliance.teleopSpeakerPoints = int(csv[i][findHeader(csv, 'Speaker Score')])
@@ -295,8 +294,8 @@ def isolateAllianceScores(csv: CSV) -> CSV:
     allianceScores(red)
     allianceScores(blue)
 
-    redRow = allianceToList(red, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'red')
-    blueRow = allianceToList(blue, csv[i - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'blue')
+    redRow = allianceToList(red, csv[len(csv) - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'red')
+    blueRow = allianceToList(blue, csv[len(csv) - 1][findHeader(csv, 'Match Level')], str(prevMatch), 'blue')
 
     newCSV.append(redRow)
     newCSV.append(blueRow)
@@ -308,7 +307,7 @@ def addAllianceToData(csv: CSV) -> CSV:
     newCSV[0].append("Alliance")
     for i in range(1, len(csv)):
         newCSV.append(csv[i])
-        start = int(csv[i][findHeader(csv, 'Auto Start Location')])
+        start = csv[i][findHeader(csv, 'Robot')]
         newCSV[i].append('blue' if isBlueAlliance(start) else 'red')
     return newCSV
 
