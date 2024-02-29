@@ -184,9 +184,6 @@ def isolateLocations(outputPath: str) -> CSV:
     file.close()
     return newCSV
 
-def calcHarmony(alliace: AllianceScores) -> None:
-    alliace.harmony = alliace.stageTotal - alliace.stage - alliace.trap
-
 def calcAmpedVsUnampedExact(totalCycles: int, speakerScore: int) -> list[int]:
     for unamped in range(totalCycles + 1):
         amped = totalCycles - unamped
