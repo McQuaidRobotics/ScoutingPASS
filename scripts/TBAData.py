@@ -36,8 +36,10 @@ def trapStatus(match: dict, alliance: str, bot: str) -> bool:
 
 team_num: Callable[[dict, str, int], str] = lambda match, alliance, bot: match['alliances'][alliance]['team_keys'][bot][3:]
 taxis: Callable[[dict, str, str], bool] = lambda match, alliance, bot: True if match['score_breakdown'][alliance][taxied+bot] == 'Yes' else False
+other_alliance: Callable[[str], str] = lambda alliance: 'blue' if alliance == 'red' else 'red'
+fouls: Callable[[dict, str, bool], str] = lambda match, alliance, tech: match['score_breakdown'][alliance]['foulCount' if not tech else 'techFoulCount']
 
-csv_headers = ['Event', 'Match #', 'Alliance', 'Team #', 'Taxis', 'Final Status', 'Trap']
+csv_headers = ['Event', 'Match #', 'Alliance', 'Team #', 'Taxis', 'Final Status', 'Trap', 'Fouls Caused', 'Tech Fouls Caused']
 
 matches_req = requests.get(TBA_BASE_URL + f'/event/{MATCH_KEY}/matches', headers=HEADERS)
 matches = matches_req.json()
@@ -59,6 +61,8 @@ for i in range(1, len(match_nums)):
                 row.append(int(taxis(matches[match_idx], alliance, bot)))
                 row.append(finalStatus(matches[match_idx], alliance, bot))
                 row.append(int(trapStatus(matches[match_idx], alliance, bot)))
+                row.append(fouls(matches[match_idx], other_alliance(alliance), False))
+                row.append(fouls(matches[match_idx], other_alliance(alliance), True))
                 newCSV.append(row)
     except(ValueError):
         break
