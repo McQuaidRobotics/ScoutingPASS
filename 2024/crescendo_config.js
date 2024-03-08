@@ -66,7 +66,6 @@ var config_data = {
       shape: "circle 15 black red true",
     },
     { name: "Autonomous", code: "a-div", title: "Autonomous", type: "divider" },
-    { name: "Leave Starting Zone", code: "al", type: "bool" },
     { name: "Auto Amp Scores", code: "aas", type: "counter" },
     {
       name: "Auto Scoring Locations",
@@ -131,32 +130,7 @@ var config_data = {
     },
     { name: "Pickup From Floor", code: "tpf", type: "bool" },
     { name: "Pickup From Source", code: "tps", type: "bool" },
-    { name: "Endgame", code: "e-div", title: "Endgame", type: "divider" },
-    { name: "Stage Timer", code: "dt", type: "timer" },
-    {
-      name: "Final Status",
-      code: "fs",
-      type: "radio",
-      choices: {
-        p: "Parked<br>",
-        o: "Onstage<br>",
-        s: "Onstage (Spotlit)<br>",
-        x: "Not attempted",
-      },
-      defaultValue: "x",
-    },
-    { name: "Note in Trap", code: "nit", type: "bool" },
     { name: "Postmatch", code: "p-div", title: "Post Match", type: "divider" },
-    {
-      name: "Alliance Speaker Score",
-      code: "pss",
-      type: "number",
-    },
-    {
-      name: "Alliance Stage Score",
-      code: "pass",
-      type: "number",
-    },
     {
       name: "Played Defense",
       code: "dr",
@@ -166,7 +140,6 @@ var config_data = {
     { name: "Tippy<br>(almost tipped over)", code: "tip", type: "bool" },
     { name: "Dropped Notes (>2)", code: "dn", type: "bool" },
     { name: "Yellow Card", code: "pyc", title: "Yellow Card", type: "bool" },
-    { name: "Red Card", code: "prc", title: "Red Card", type: "bool" },
     {
       name: "Egregiously Bad Event Occurred (put info in comments)",
       code: "peb",
