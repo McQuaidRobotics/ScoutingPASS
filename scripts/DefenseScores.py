@@ -88,5 +88,5 @@ outputPath = filedialog.askdirectory()
 populateAvgs(sourceCSV)
 
 with open(outputPath + "/DefenseScores.csv", 'w', encoding='utf-8') as file:
-    writer = csvStuff.writer(file)
+    writer = csvStuff.writer(file, lineterminator='\n')
     writer.writerows(calcScores(sourceCSV))
