@@ -52,11 +52,14 @@ total: Callable[[dict, str], str] = lambda match, alliance: match['alliances'][a
 
 info_headers = ['Event', 'Match #', 'Alliance', 'Team #', 'Taxis', 'Final Status', 'Trap', 'Fouls Caused', 'Tech Fouls Caused', 'Red Card', 'Caused 424', 'Can Harmonize']
 score_headers = ['Event', 'Match #', 'Alliance', 'Total Score', 'Auto Total Score', 'Taxi Score', 'Auto Speaker Scores', 'Auto Amp Scores', 'Teleop Total Note Score', 'Teleop Unamped Speaker Score', 'Teleop Amped Speaker Score', 'Teleop Amp Score', 'Total Stage Score', 'Final Status Score', 'Trap Score', 'Harmony Score', 'Total Foul Score', 'Fouls Score', 'Tech Fouls Score']
+ranking_headers = ['Event', 'Ranking', 'Team #', 'Total Ranking Points', 'g424 Ranking Points', 'Avg Total Ranking Points', 'Avg Coop Ranking Points', 'Avg Match Score', 'Avg Auto Points', 'Avg Stage Points']
 
 matches_req = requests.get(TBA_BASE_URL + f'/event/{MATCH_KEY}/matches', headers=HEADERS)
 matches = matches_req.json()
 
 match_nums = [int(match['match_number']) if match['comp_level'] == 'qm' else None for match in matches]
+
+g424_counts: dict[str, int] = {}
 
 newCSV: list[list[str]] = []
 newCSV.append(info_headers)
@@ -84,7 +87,12 @@ for i in range(1, len(match_nums)):
                 row.append(fouls(matches[match_idx], alliance, False))
                 row.append(fouls(matches[match_idx], alliance, True))
                 row.append(int(red_card(matches[match_idx], alliance, team_num(matches[match_idx], alliance, idx))))
-                row.append(int(g424(matches[match_idx], other_alliance(alliance))))
+                row.append(int(g424(matches[match_idx], alliance)))
+                if g424(matches[match_idx], other_alliance(alliance)):
+                    try:
+                        g424_counts['frc'+num] += 1
+                    except (KeyError):
+                        g424_counts['frc'+num] = 1
                 bots.append(row)
             for idx, bot in enumerate(climb_pos.keys()):
                 if climb_pos[bot] != None:
@@ -146,5 +154,31 @@ for i in range(1, len(match_nums)):
         break
 
 file = open(sys.argv[1]+'/TBAAllianceScores.csv', 'w', encoding='utf-8')
+writer = csv.writer(file, lineterminator='\n')
+writer.writerows(newCSV)
+
+ranking_req = requests.get(TBA_BASE_URL + f'/event/{MATCH_KEY}/rankings', headers=HEADERS)
+ranks = ranking_req.json()
+
+newCSV = []
+newCSV.append(ranking_headers)
+for rank in ranks['rankings']:
+    row: list[str] = []
+    row.append(MATCH_KEY)
+    row.append(rank['rank'])
+    team = rank['team_key']
+    row.append(team[3:])
+    row.append(rank['extra_stats'][0])
+    try:
+        row.append(g424_counts[team])
+    except (KeyError):
+        row.append(0)
+    row.append(rank['sort_orders'][0])
+    row.append(rank['sort_orders'][1])
+    row.append(rank['sort_orders'][2])
+    row.append(rank['sort_orders'][3])
+    row.append(rank['sort_orders'][4])
+
+file = open(sys.argv[1]+'/TBARankingInfo.csv', 'w', encoding='utf-8')
 writer = csv.writer(file, lineterminator='\n')
 writer.writerows(newCSV)
