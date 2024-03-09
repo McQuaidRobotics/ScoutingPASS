@@ -1,0 +1,39 @@
+Event,Team number,Width,Length,Weight,Drivetrain,Other Drivetrain,Swerve Ratio,Drivetrain Motor,Batteries,Pickup Floor Notes,Autos,Scouting Method,comment
+2024flwp,6686,28,28.5,60,w,can turn while driving,x,n,6,N,nothing yet,none,
+2024flwp,3932,28,28,103,s,,2,n,6,Y,"preloaded, pickup 3 from floor","working with SPAM, using Google form",
+2024flwp,6317,24,30,113,s,,o,n,7,Y,"Score 3 note when centered, two note on side",scout radio,"can score amp and speaker, unknown drivetrain ratio"
+2024flwp,6300,28,31,115,s,,1,f,7,Y,2 note auto all positions,nothing specific,"small team, half are scouting roughly"
+2024flwp,5842,28,28,115,s,,2,n,5,Y,"3 note from center including preloaded, untested amp auto",same as us,
+2024flwp,9725,27,32,65,w,,x,c,2,N,several for different situations ,none,speaker only
+2024flwp,179,26,26,114,s,,o,n,12,Y,5 and 6 note autos,Google forms,"19 fps, gear ratio not known exactly"
+2024flwp,5557,26,30,108,s,,3,x,11,Y,4 note and 5 note auos,website,"kraken for drive, neo for turning"
+2024flwp,3627,30,30,95,s,,o,n,5,Y,5 note untested auto from closest to speaker,Google forms,Max Swerve
+2024flwp,4388,29,29,100,s,,3,f,10,Y,2 note and taxi,same as us,
+2024flwp,8861,27,32,110,m,,x,n,1,N,1 note and taxi,none,
+2024flwp,180,28,30.5,111,s,,3,k,12,Y,"5note(three by speaker, one in center, center start), ampside 3 note, source side 4note",spaaytics(spreadsheet),
+2024flwp,6743,27,32,66,w,,x,n,7,Y,"Center 2 note+mobility, side2 note +mobility, any 1 note + mobility",Google forms,modified kit bot
+2024flwp,9402,28,31.5,80,s,not swerve drive specialties ,o,n,4,Y,2 notenone,,
+2024flwp,744,27,32,123.5,s,,2,f,7,Y,mobility,"pit scouting, ai servey, instand servey ",
+2024flwp,4206,27,30,108.6,s,,4,k,20,Y,"Left 4 note, middle 4 note, right 3 note",none,only pick up from the middle during auto
+2024flwp,5872,29,29,76,s,,2,n,4,Y,mobility,Google formvery small team(6people),
+2024flwp,2383,27,27,107,s,,3,x,8,Y,4notewith notes in wing,pit scouting and stand scouting(qualitative and quantitative),"kraken on drive, falcon for direction "
+2024flwp,694,26,31,120,s,,3,x,15,Y,"3.5 goes to mid line, 4.5","pit and stand, stand recodes scores",vortex drive train
+2024flwp,9404,30,30,100.9,s,,o,n,5,Y,1 note + mbility,one person scouts,"middle ratio max swerves, small team"
+2024flwp,9693,26,37,59,w,,x,c,3,N,1note+mobility,none,modified kitbot
+2024flwp,59,28,28,116,s,,4,k,25,Y,in progress,pit scouting+stand scouting,neo stearing
+2024flwp,9779,27,26,100,w,,x,n,4,Y,in progress,none,rookies 
+2024flwp,3173,26,26,119,s,,3,f,8,Y,"4 piece in sim,1 piece ",this,us
+2024flwp,4458,28,30,115,s,,1,n,1,Y,"3 note, 4note",Google formvery small team(6people),
+2024flwp,9040,0,0,0,w,,x,c,4,N,taxi an score on. Iddke and right only score on left,not sure ,"willin to help us if needed, didn't know too much about hur bot, modifie kitbot"
+2024flwp,5410,32,24,102,s,,o,n,5,Y,Taxi + amp (preload only)no field scouting,pit scouting (spreadsheet) ,5-10 hours of driver practice
+2024flwp,108,26,26,103,s,,o,n,6,Y,4 nite auto + taxi,pit scouting and field scouting (raw data scouting),(gear ratio 4.7 -1)(vision)(lack of driver practice)(can climb)
+2024flwp,1523,21,30,97,s,,o,n,8,Y,Speaker + taxi,pit scouting + field scouting (Google form),(10-1 ratio)(can climb any location)(vision)
+2024flwp,1744,21,21,105,m,,x,c,6,N,Speaker + taxi,"writes ait roots in docs, skips field scouting",(lots of driver practice)(can only pick up from human player station)(can climb)(
+2024flwp,2152,21,38,60,s,,o,n,12,Y,3-5 notes an taxi,none,(drive is 1to1 an turning is12 to 1) only shoot from woofer 6-8 hours driv practice 
+2024flwp,348,24,24,90,s,,o,n,2,Y,Speaker + amp + taxi,pit scouting (spreadsheet)(ratio 4.7 – 1)(should be able to climb)(limited drive practice)(WHEN PICKING UP FROM GROUND ONLY AMP),
+2024flwp,817,28,28,101,s,,2,n,8,Y,speaker (tablet app) pit+field scouting,(can climb)(20 hours driver practice)(can fit under the stage),
+2024flwp,3390,58,80,115,m,,3,n,2,Y,taxi (maybe amp),pit scouting + field scouting (spreadsheet),(climb + harmony) (dimensions in cm)
+2024flwp,8775,22,24,115,s,,o,n,14,Y,5 note auto! Taxi,(custom scouting algorithm) (no pit scouting) (they even track cycle times),(climb)(extreme amount of driver experience outside of rec (does NASA flight sims))
+2024flwp,806,30,30,115,s,,2,n,8,Y,Speaker + taxi,only match scouting (spreadsheet) ,(amp not reliable)(can climb)(has driver experience)
+2024flwp,7652,32,23,78,w,,x,n,6,N,taxi+speaker,pit scouting + field scouting(spreadsheet),(climb)(speaker and amp)(
+2024flwp,5472,26,26,118,s,,3,k,15,Y,3 note + taxi,pit scouting + field scouting (spreadsheet),(can climb)(lots of driver practice)(high bumpers tht a note can fit under)
