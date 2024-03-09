@@ -39,8 +39,9 @@ taxis: Callable[[dict, str, str], bool] = lambda match, alliance, bot: True if m
 other_alliance: Callable[[str], str] = lambda alliance: 'blue' if alliance == 'red' else 'red'
 fouls: Callable[[dict, str, bool], str] = lambda match, alliance, tech: match['score_breakdown'][alliance]['foulCount' if not tech else 'techFoulCount']
 red_card: Callable[[dict, str, str], bool] = lambda match, alliance, bot: 'frc'+bot in match['alliances'][alliance]['dq_team_keys']
+g424: Callable[[dict, str], bool] = lambda match, alliance: bool(match['score_breakdown'][alliance]['g424Penalty'])
 
-csv_headers = ['Event', 'Match #', 'Alliance', 'Team #', 'Taxis', 'Final Status', 'Trap', 'Fouls Caused', 'Tech Fouls Caused', 'Red Card', 'Can Harmonize']
+info_headers = ['Event', 'Match #', 'Alliance', 'Team #', 'Taxis', 'Final Status', 'Trap', 'Fouls Caused', 'Tech Fouls Caused', 'Red Card', 'Caused 424', 'Can Harmonize']
 
 matches_req = requests.get(TBA_BASE_URL + f'/event/{MATCH_KEY}/matches', headers=HEADERS)
 matches = matches_req.json()
@@ -48,7 +49,7 @@ matches = matches_req.json()
 match_nums = [int(match['match_number']) if match['comp_level'] == 'qm' else None for match in matches]
 
 newCSV: list[list[str]] = []
-newCSV.append(csv_headers)
+newCSV.append(info_headers)
 for i in range(1, len(match_nums)):
     try:
         match_idx = match_nums.index(i)
@@ -73,6 +74,7 @@ for i in range(1, len(match_nums)):
                 row.append(fouls(matches[match_idx], other_alliance(alliance), False))
                 row.append(fouls(matches[match_idx], other_alliance(alliance), True))
                 row.append(int(red_card(matches[match_idx], alliance, team_num(matches[match_idx], alliance, idx))))
+                row.append(int(g424(matches[match_idx], other_alliance(alliance))))
                 bots.append(row)
             for idx, bot in enumerate(climb_pos.keys()):
                 if climb_pos[bot] != None:
@@ -94,7 +96,8 @@ for i in range(1, len(match_nums)):
     except(ValueError):
         break
 
-
 file = open(sys.argv[1]+'/TBAInfo.csv', 'w', encoding='utf-8')
 writer = csv.writer(file, lineterminator='\n')
 writer.writerows(newCSV)
+
+newCSV = []
