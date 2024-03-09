@@ -178,6 +178,7 @@ for rank in ranks['rankings']:
     row.append(rank['sort_orders'][2])
     row.append(rank['sort_orders'][3])
     row.append(rank['sort_orders'][4])
+    newCSV.append(row)
 
 file = open(sys.argv[1]+'/TBARankingInfo.csv', 'w', encoding='utf-8')
 writer = csv.writer(file, lineterminator='\n')
