@@ -898,7 +898,7 @@ function getData(dataFormat) {
     if (thisField.type == 'checkbox') {
       var thisFieldValue = thisField.checked ? checkedChar : uncheckedChar;
     } else {
-      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g, "-").replace('[', '').replace(']', '') : "";
+      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g, "-").replace('[', '').replace(']', '').replace('\u00ab', '\'').replace('\u00bb', '\'') : "";
     }
     fd.append(fieldname, thisFieldValue)
   })

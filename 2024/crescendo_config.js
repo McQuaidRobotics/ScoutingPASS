@@ -17,7 +17,7 @@ var config_data = {
       name: "Event",
       code: "e",
       type: "event",
-      defaultValue: "2024flwp",
+      defaultValue: "2024nyro",
       required: "true",
       disabled: "true",
     },
