@@ -66,6 +66,10 @@ newCSV.append(info_headers)
 for i in range(1, len(match_nums)):
     try:
         match_idx = match_nums.index(i)
+        try:
+            matches[match_idx]['score_breakdown']['red']
+        except (TypeError):
+            break
         for alliance in alliances:
             bots: list[list[str]] = []
             climb_pos: dict[str, str] = {}
@@ -123,6 +127,10 @@ newCSV.append(score_headers)
 for i in range(1, len(match_nums)):
     try:
         match_idx = match_nums.index(i)
+        try:
+            matches[match_idx]['score_breakdown']['red']
+        except (TypeError):
+            break
         for alliance in alliances:
             total_final_status: int = 0
             total_trap: int = 0

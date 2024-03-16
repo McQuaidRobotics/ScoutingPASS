@@ -74,7 +74,7 @@ def isolateCycleTime(csv: CSV) -> CSV:
         locations = csv[i][findHeader(csv, TELE_SCORE_LOCS)].split(",")
         if(times[0] == '' or locations[0] == ''):
             continue
-        for i2 in range(len(times)):
+        for i2 in range(len(times)) if len(times) < len(locations) else range(len(locations)):
             newRow: list[str] = []
             for header in headers:
                 if isInMain(csv, header):
