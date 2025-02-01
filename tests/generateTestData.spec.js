@@ -43,7 +43,7 @@ test("Create 2023 Event Test Data", async ({ page }) => {
   test.setTimeout(600 * 100);
   const outputStrings = [];
   await page.goto("file:///C:/Source/personal/ScoutingPASS/index.html");
-  for (var matchNum = 1; matchNum <= 50; matchNum++) {
+  for (var matchNum = 1; matchNum <= 4; matchNum++) {
     for (var i = 0; i < ROBOT_POSITIONS.length; i++) {
       await page.locator("#input_s").click();
       await page.locator("#input_s").fill("JK");
@@ -98,7 +98,7 @@ test("Create 2023 Event Test Data", async ({ page }) => {
     }
   }
   await fs.writeFile(
-    "C:\\Source\\personal\\ScoutingPASS\\tests\\output.txt",
+    "C:\\Source\\personal\\ScoutingPASS\\tests\\output2.txt",
     outputStrings.join("\n")
   );
 });
