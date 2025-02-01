@@ -130,6 +130,14 @@ function addTimer(table, idx, name, data) {
     cell.appendChild(button4);
   }
 
+  if (data.type === "cycleType") {
+    var inp = document.createElement("input");
+    inp.setAttribute("type", "hidden");
+    inp.setAttribute("id", "cycleType_" + data.code);
+    inp.setAttribute("value", "{}");
+    cell.appendChild(inp);
+  }
+
   idx += 1;
   row = table.insertRow(idx);
   row.setAttribute("style", "display:none");
@@ -450,6 +458,9 @@ function addText(table, idx, name, data) {
   if (data.hasOwnProperty("tooltip")) {
     cell1.setAttribute("title", data.tooltip);
   }
+  if (data.type === "cycleType") {
+    cell1.setAttribute("hidden", "");
+  }
   cell2.classList.add("field");
   var inp = document.createElement("input");
   inp.setAttribute("id", "input_" + data.code);
@@ -476,6 +487,10 @@ function addText(table, idx, name, data) {
   }
   if (data.hasOwnProperty("disabled")) {
     inp.setAttribute("disabled", "");
+  }
+  if (data.hasOwnProperty("hidden") || data.type === "cycleType") {
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("value", "{}");
   }
   cell2.appendChild(inp);
 
@@ -669,7 +684,8 @@ function addElement(table, idx, data) {
   } else if (
     data.type == "scouter" ||
     data.type == "event" ||
-    data.type == "text"
+    data.type == "text" || 
+    data.type == "cycleType"
   ) {
     idx = addText(table, idx, name, data);
   } else if (
@@ -681,7 +697,7 @@ function addElement(table, idx, data) {
   } else if (
     data.type == "match" ||
     data.type == "team" ||
-    data.type == "number"
+    data.type == "number" 
   ) {
     idx = addNumber(table, idx, name, data);
   } else if ((data.type == 'field_image') ||
@@ -1351,7 +1367,7 @@ function counter(element, step) {
   var ctr = element.getElementsByClassName("counter")[0];
   let cycleTimer = document.getElementById("cycleTimer" + base);
   let changingInput = document.getElementById("counterValueAttribute" + base);
-  let changingValue = document.getElementById("counterValueInput" + base);
+  let changingValue = document.getElementById("counterValueInput" + base); 
   var result = parseInt(ctr.value) + step;
 
   if (isNaN(result)) {
