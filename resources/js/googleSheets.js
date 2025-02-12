@@ -1,5 +1,5 @@
 function setUpGoogleSheets() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwrU7jIbikKm7DUsp-U6ayH5k_h9n8ayJ80EFPYA6SiHm2cB8vuu1fRXtJS60yOwEfr/exec'
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzrsuEjN8QiJXGEDb6de3C2XzHW0NGgsMd3QCpJqtWH7UYmg8rjl6Q-yXThOH61h-uX/exec'
     const form = document.querySelector('#scoutingForm')
     const btn = document.querySelector('#submit')
  
@@ -14,9 +14,10 @@ function setUpGoogleSheets() {
       //   console.log(`${key}: ${value}\n`);
       // }
 
+      console.log(fd);
       fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd })
         .then(response => { 
-              console.log(fd, response); })
+              console.log(response); })
         .catch(error => {
               alert('Error!'); console.log(error);})
 

@@ -161,7 +161,8 @@ h2 {
 .clearForm,
 .submitForm,
 #displayButton,
-#copyButton {
+#copyButton,
+#pitscoutButton {
   font-family: Alexis;
   padding: 10px;
   background-color: yellow;
@@ -322,4 +323,13 @@ select {
 .divider-info {
   font-style: italic;
   padding-top: 5px;
+}
+
+/* 2024 SPECIFIC STYLES */
+#minus_tas {
+  display: none;
+}
+
+#plus_tas,#input_tas {
+  font-size: 40px;
 }

@@ -1,22 +1,34 @@
-var config_data = `
+var requiredFields = ["t", "wid", "len", "wei"];
+var config_data = 
 {
-  "title": "Scouting PASS 2024",
-  "page_title": "Crescendo",
-  "pitConfig": "true",
-  "prematch": [
+  title: "Scouting PASS 2024",
+  dataFormat: "tsv",
+  page_title: "Crescendo Pit Scouting",
+  pitConfig: "true",
+  prematch: [
+    {
+      name: "Event",
+      code: "e",
+      type: "event",
+      defaultValue: "2024nytr",
+      required: "true",
+      disabled: "true",
+    },
     { "name": "Team Number",
       "code": "t",
-      "type": "number"
+      "type": "team"
     },
     { "name": "Width",
       "code": "wid",
       "type": "number",
-      "defaultValue": "0"
+    },
+    { "name": "Length",
+      "code": "len",
+      "type": "number",
     },
     { "name": "Weight",
       "code": "wei",
       "type": "number",
-      "defaultValue": "0"
     },
     { "name": "Drivetrain",
       "code": "drv",
@@ -24,11 +36,10 @@ var config_data = `
       "choices": {
         "s": "Swerve<br>",
         "w": "West Coast/Tank<br>",
-        "b": "Butterfly/Grashopper<br>",
         "m": "Mechanum<br>",
         "o": "Other"
       },
-      "defaultValue": "o"
+      "defaultValue": "s"
     },
     { "name": "Other Drivetrain",
       "code": "odt",
@@ -47,7 +58,7 @@ var config_data = `
         "o": "Other ratio (put in comments)<br>",
         "x": "Not Swerve"
       },
-      "defaultValue":"x"
+      "defaultValue":"3"
     },
     { "name": "Drivetrain Motor",
       "code": "mot",
@@ -56,9 +67,10 @@ var config_data = `
         "n": "Neo<br>",
         "f": "Falcon<br>",
         "c": "CIM<br>",
+        "k": "Kraken<br>",
         "x": "Other<br>"
       },
-      "defaultValue":"x"
+      "defaultValue":"f"
     },
     { "name": "# of Batteries",
       "code": "nob",
@@ -86,13 +98,5 @@ var config_data = `
       "size": 20,
       "maxSize": 250
     }
-  ],
-  "auton": [
-  ],
-  "teleop": [
-  ],
-  "endgame": [
-  ],
-  "postmatch": [
   ]
-}`;
+};

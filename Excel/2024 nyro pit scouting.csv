@@ -1,0 +1,55 @@
+Event,Team number,Width,Length,Weight,Drivetrain,Other Drivetrain,Swerve Ratio,Drivetrain Motor,Batteries,Pickup Floor Notes,Autos,Scouting Method,comment
+2024nyro,7709,25,25,110,s,,2,n,4,N,2 and3 note starting at sub,custom app,
+2024nyro,8145,31,31,120,s,,3,k,10,Y,2 note,didn't know,
+2024nyro,6621,28,28,99,s,,3,n,4,Y,move,no scouting ,
+2024nyro,6353,27,27,105,s,,3,f,6,Y,2 note,digital scouting,
+2024nyro,6868,29.5,29.8,104,s,,3,n,10,Y,Defene . 2 note,unknown,
+2024nyro,3951,29.5,29.5,87,s,,3,n,7,Y,3 piece in front of speaker only,not enough kids so none,double climb is possible
+2024nyro,4930,27,27,83,s,,3,n,10,Y,mobility,Google fire base. Compiles data in Google sheets to make predictions.,
+2024nyro,4991,25,25,83,s,,3,n,7,Y,2 note from amp side,none,climb and buddy climb. Speaker only
+2024nyro,5528,29,27,115,s,,3,n,6,Y,"2 note auto, maybe 3",Google sheets,
+2024nyro,6300,28,31,99,s,,3,f,7,Y,"4 note auto, chance fo 2 more",notes,
+2024nyro,2340,32,27,95,w,,3,c,7,N,1 note auto,not formal scouting,
+2024nyro,3003,25.5,34.5,12.6,s,,3,n,12,Y,"3 piece auto, 4 piece inconsistent",frc crawler,
+2024nyro,5740,26,32.5,124.8,s,,3,k,8,Y,4 piece auto aims while moving,devil tech ,can do speaker and harmonize
+2024nyro,6911,29.5,29.5,120,s,,1,k,8,Y,2 piece,Google sheets,1 completion of drive practice not experienced + multiple drivers one third field shot auto aim 7 to ten seconds cycle time 8 cycles consistent no amp autos amp is 50 
+2024nyro,271,30,29,0,w,,x,k,10,Y,Taxi + pickup,no scouting yet ,turret under the bumpers intake kraken for everything ground intake pla 3d printed shooter weels could chew up note not much driver experience on this robot In theory amp is possible not much data pretty untested overall
+2024nyro,27,28.5,258.5,121,s,,3,k,12,Y,5 piece pickup on amp side,3types pit scouting field scouting issues scouting,auto aim midfield shot 95 percentacuracy +spin speaker + amp 9piece in teleop only broke once fixed connection issues? Canclimb  9 to 12 second cycles
+2024nyro,191,27,27,124.6,s,,3,n,12,Y,4.5 speaker,field scouting similar to ours,no source under the bumper intake auto aim deflector so they can shoot amp no spin cycle time  = 13.3  experienced driver
+2024nyro,120,28,31,102,s,,3,k,8,Y,2 piece auto,field scouting+ pit scouting  alliance selection+ debrief,"source intake amp + speaker + climb, spin no auto aim"
+2024nyro,334,28.5,25.5,110,s,,2,f,8,N,3 an 4 note,"pit am field, cycles, fouls, applying with drive team, ","first year swerve, 20 hours practice , amp am speaker, climbs, over bumper intake, auto aim, 2 weeks auto aim, "
+2024nyro,3015,27,29,116.8,s,,3,f,20,Y,6 note,qr scout,trap climb
+2024nyro,3117,26,32,124.1,s,,3,f,7,Y,2,,neo for Swerve angle
+2024nyro,3181,28,28,115,s,,3,n,8,Y,2 note any position ,devil tech app,
+2024nyro,3193,26,26,97,s,neos,3,n,12,Y,2,none,
+2024nyro,3799,30,26,86,s,,3,n,12,Y,mobility,custom app,
+2024nyro,3838,30,30,115,s,,3,n,10,N,2,none,
+2024nyro,1591,32,28,116.3,s,,3,f,6,Y,4,zoho formes,
+2024nyro,585,24,395,80,w,,3,c,1,N,mobility,paper,
+2024nyro,1559,29.5,29.5,85,s,,3,k,8,Y,2,custum,
+2024nyro,1511,27.5,27.5,108,s,,3,n,12,Y,2,custom app,
+2024nyro,1507,27,27,123.8,s,,3,f,11,Y,4 piece auto aims while moving,custom app,
+2024nyro,1468,32,27.65,119,s,,3,k,13,Y,"4 note auto, chance fo 2 more",paper,
+2024nyro,1450,26,28,105,w,,3,n,4,Y,1 note auto,nope,
+2024nyro,8595,26,26,88,s,,3,f,4,Y,4,,1.5 sec cimb
+2024nyro,7903,30,30,0,s,,3,n,5,Y,,,"under bumper intake, can shoot both speaker and amp"
+2024nyro,4458,30.5,28,120,s,,3,n,8,N,4 note and 3 note,qr scout,robo vision and pneumatic climber
+2024nyro,4093,30,30,118,s,"modified swerve drive, not using wpilib",3,f,7,N,one auto that leaves starting zone ,,a lot of pneumatics
+2024nyro,3173,26,26,122,s,,3,k,9,Y,Three 4 note autos,tableau,wrist works
+2024nyro,2228,28,32,116,s,,2,f,7,Y,4 note . Thee notes,custom digital,
+2024nyro,3044,29.5,29.5,107,s,,o,n,8,Y,1 . 5,Google form ,
+2024nyro,7036,30,30,90,s,,3,n,3,Y,no autto,said they had already done all their scouting ,
+2024nyro,533,36,36,125,s,,3,n,8,Y,most commonly 2 note auto. Can do from both front and sides. ,compile data into excel,a lot of custom 3d printed parts
+2024nyro,578,28,29,113,s,,3,f,6,Y,"Testing 4 note auto, have shoot and move and shoot and stay",pit an match scouting on a team spreadsheet,separate amp and speaker systems 
+2024nyro,564,33,37,107,m,,3,n,9,Y,1 note auto,scouting.longwoodrobotics.com ,vision and climb
+2024nyro,378,26,36,95,s,,3,n,11,Y,shoot into speaker 2 times,paper scouting ,can shoot in front and behind
+2024nyro,229,29,28,0,w,,1,n,6,N,"none, working in taxi",none,"robot questionably functional, no sure it can do anything, a broken kitit"
+2024nyro,1518,24.5,34.5,100,s,,3,f,12,Y,1note auto score and leaving,pit scouting and some field scouting. Google form for data,pickup from source and ground drive team has had 6 hours ish freshman drivers amp plus speaker cycle 35 seconds 
+2024nyro,1405,24,24,101.3,s,,3,f,13,Y,4,pit plus match scouting use app plus spreadsheet,fast and small fixed shooter shoot from right in front of amp or speaker. 30 hours drive experience driver has done this before deflector for amp and defense 7 second cycle
+2024nyro,340,28,28,118,s,,2,x,12,Y,¾ lots aperently,doing scouting ,
+2024nyro,694,27,31,123,s,,3,n,15,Y,"5 note auto, 3note auto",paper sheets,can do trap
+2024nyro,870,29,30,124.4,s,,2,k,8,Y,"3 note,4 note",custom program,
+2024nyro,639,28,28,108,s,,1,n,8,Y,2 note,paper spreadsheet,"max speed swerve ratio, 7 cameras, really fast climb"
+2024nyro,1308,29,29,85,s,,1,n,4,Y,1 note auto,notebooks,
+2024nyro,1126,30,30,115,s,,2,n,6,Y,2-3 note auto,same as us,same shooter/accusation method as us
+2024nyro,424,30,24,120,s,,3,n,6,Y,1 note auto,stand scouting. No real plan for collecting data,20 hours of practice mostly new drive team with 2 years on swerve 

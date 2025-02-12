@@ -1,0 +1,51 @@
+Event,Team number,Width,Length,Weight,Drivetrain,Other Drivetrain,Swerve Ratio,Drivetrain Motor,Batteries,Pickup Floor Notes,Autos,Scouting Method,Comment
+2024nytr,3003,25.5,34.5,123,s,,3,n,15,Y,"multiple 3 pieces, potential 4",paired with 1591,
+2024nytr,3360,29,30.75,110,s,,o,f,16,N,"4.5,2 4s and 2",just field,
+2024nytr,2791,35.5,35.5,120,s,,3,n,16,Y,3 to 5,custom scouting app,
+2024nytr,2601,29.5,30.5,124.1,s,,2,k,10,Y,2,custom app/Google spreadsheets,
+2024nytr,2234,36,24,106,m,,x,n,4,N,2,notes app on phone,
+2024nytr,2095,24,25,83.9,m,,x,n,6,N,1,notes app on phone ,
+2024nytr,3173,26,26,122,s,,3,k,12,Y,3,custom app scout pass,
+2024nytr,3171,27,27,124,s,,o,n,8,Y,9,excel spreadsheet ,25 ft/s
+2024nytr,3044,29.5,29.5,107,s,,4,n,6,Y,2 (can make custom autos),Google forms,
+2024nytr,6969,30,30,80,s,,2,n,5,Y,movement ,,
+2024nytr,7504,28,28,98.8,s,,o,n,8,Y,4 piece troll,,
+2024nytr,7605,29.5,31.5,120,s,,2,n,7,Y,4 note and 5 note,,
+2024nytr,1559,29.5,29.5,90,s,,3,f,4,Y,2 note,,
+2024nytr,1796,29.5,30,125,s,,3,k,10,Y,6 piece,,
+2024nytr,1591,26,26,115,s,,4,n,15,Y,5.5,,
+2024nytr,1511,27.25,2725,118,s,,3,n,12,Y,2 note,,
+2024nytr,9750,26,26,51,w,,x,f,9,N,mobility ,,
+2024nytr,1493,27,27,123.4,s,,1,f,6,Y,"4 note, ",,
+2024nytr,2053,28,28,105,s,,3,f,12,Y,"3 note, changeable ",,
+2024nytr,3181,28,28,117,s,,4,n,9,Y,10,partnering with McQuaid (scout pass),
+2024nytr,20,29.5,29.5,124.5,s,,3,n,17,Y,"3 good, can customize","custom app, scans into Google sheets",
+2024nytr,7709,25,25,110,s,,2,n,4,Y,6,custom app,
+2024nytr,229,29,29,65,w,,x,n,6,N,2,on paper,end effector in construction
+2024nytr,250,26,32,111,s,,3,n,6,Y,14,custom software into excel sheet ,
+2024nytr,5149,32,24,70,w,,x,c,5,Y,1,all in head,
+2024nytr,333,25.25,25.25,108,s,,4,k,10,Y,3,another teams software into excel,
+2024nytr,639,28,28,109,s,,o,n,8,Y,4,Google form to Google sheets,swerve ratio: 14:1
+2024nytr,9076,28,28,162.5,s,,o,n,6,Y,"1 currently, second in work",paper to spreadsheet,swerve ratio 13:1
+2024nytr,296,30,30,105,s,,o,f,12,Y,10,"using 8033's app, data goes into database","not sure of ratio, max speed 5ft/s, us e neos and falcons on drivetrain"
+2024nytr,6911,29.5,29.5,120,s,,o,k,8,Y,3,google form to spreadsheet ,swerve ratio - unknown
+2024nytr,6648,31,27,95.8,w,,x,n,4,N,3,notes app,
+2024nytr,6621,29.5,29.5,108,s,,2,x,4,Y,3,no scouting ,drivetrain motor - neos & vortex
+2024nytr,6463,24,36,105,s,,o,n,6,N,1,on paper to excel spreadsheet ,swerve ratio 4:1
+2024nytr,6401,30,30,90,s,,o,n,4,Y,1,2638 scout app,swerve speed: 16 ft/s
+2024nytr,3951,29.5,29.5,91,s,,o,n,7,Y,up to 3 note auto. 15-16 different autos,sheets pits and field,
+2024nytr,3799,30,26,93,s,rev,o,n,12,Y,speaker 4 note,pit and field scoutig,super strong ground intake
+2024nytr,5016,30,30,90,s,,3,f,10,Y,1 note + taxi,spreadsheet field and pit,
+2024nytr,5881,27,30,95,s,,3,n,12,Y,3 note speaker- various 2 notes,minimal pit and field scouting,
+2024nytr,5590,29.5,29.5,84.8,s,rev,x,f,7,N,3 note,pit a field scouting,
+2024nytr,6300,31,28,105,s,,2,f,7,Y,4 piece- 6 autos,small team so the drive team scouts,they fixed their ground intake
+2024nytr,5993,31,28,108,w,,x,n,12,Y,2 notes taxi,pit scouting a field scouting (notes),
+2024nytr,7030,27,32,40,w,,x,c,7,Y,nothing,no scouting,
+2024nyro,7718,24,32,116,s,,3,n,8,Y,4 (untested),Google form into Google sheet ,
+2024nyro,9624,32,27,118,w,,x,n,4,Y,3,excel form,
+2024nyro,3419,28,30,122,s,,o,f,12,Y,3,Google form to Google sheets ,max speed 18ft/s
+2024nyro,1880,30,26,90,s,,2,f,10,N,1,notes app / Google forms,
+2024nyro,7031,28.75,28.75,105,s,,o,n,8,Y,1,no scoutin,max speed 12 ft/s
+2024nytr,3986,29,30,123,s,,3,f,24,Y,9 auto- 4 note,spreadsheets + algorithms,they can shoot over other robots
+2024nytr,4122,27,29,93,s,,2,f,6,Y,4 note (maybe) 7 autos,pit a field spreadsheet ,under the bumper intake
+2024nytr,3550,28,28,107,s,,3,f,9,Y,3 note,visual pit scouting and field scouting,

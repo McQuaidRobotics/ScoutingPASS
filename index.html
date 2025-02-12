@@ -12,8 +12,15 @@
     <script src="resources/js/TBAInterface.js"></script>
     <script src="resources/js/googleSheets.js"></script>
     <script src="resources/js/scoutingPASS.js"></script>
-    <script src="2024/crescendo_config.js"></script>
+    <script src="2025/reefscape_config.js"></script>
     <link rel="stylesheet" href="resources/css/scoutingPASS.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script>
+    // PWA Support.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register("./pwaserviceworker.js");
+}
+  </script>
   </head>
 
   <body>
@@ -26,10 +33,11 @@
                 onclick="location.href='pitscouting.html'"
                 type="button"
                 class="displayButton floatLeft"
+                id="pitscoutButton"
               >
                 Pit Scouting Here
               </button>
-              <span class="page_title">Scouting App</span>
+              <span class="page_title">Scouting App </span>
             </span>
           </h1>
           <p class="match-label">

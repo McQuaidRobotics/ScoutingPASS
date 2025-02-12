@@ -113,6 +113,9 @@ function addTimer(table, idx, name, data) {
     button3.setAttribute("onclick", "newCycle(this.parentElement)");
     button3.setAttribute("value", "New Cycle");
     button3.setAttribute("class", "cycleTimerButton");
+    if (data.showCycle === "false") {
+      button3.setAttribute("style", "display:none");
+    }
     cell.appendChild(button3);
     var button4 = document.createElement("input");
     button4.setAttribute("id", "undo_" + data.code);
@@ -121,7 +124,18 @@ function addTimer(table, idx, name, data) {
     button4.setAttribute("value", "Undo");
     button4.setAttribute("style", "margin-left: 20px;");
     button4.setAttribute("class", "cycleTimerButton");
+    if (data.showUndo === "false") {
+      button4.setAttribute("style", "margin-left: 20px;display:none");
+    }
     cell.appendChild(button4);
+  }
+
+  if (data.type === "cycleType") {
+    var inp = document.createElement("input");
+    inp.setAttribute("type", "hidden");
+    inp.setAttribute("id", "cycleType_" + data.code);
+    inp.setAttribute("value", "{}");
+    cell.appendChild(inp);
   }
 
   idx += 1;
@@ -210,6 +224,19 @@ function addCounter(table, idx, name, data) {
       inp.setAttribute("value", data.cycleTimer);
       cell.appendChild(inp);
     }
+  }
+
+  if (data.hasOwnProperty('valueInput') && data.hasOwnProperty('valueAttribute')) {
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("id", "counterValueAttribute_" + data.code);
+    inp.setAttribute("value", data.valueAttribute);
+    cell.appendChild(inp);
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("id", "counterValueInput_" + data.code);
+    inp.setAttribute("value", data.valueInput);
+    cell.appendChild(inp);
   }
 
   if (data.hasOwnProperty('defaultValue')) {
@@ -341,7 +368,7 @@ function addClickableImage(table, idx, name, data) {
   if (data.hasOwnProperty('allowableResponses')) {
     let responses = data.allowableResponses.split(' ').map(Number)
     console.log(responses)
-      inp.setAttribute("value", responses);
+    inp.setAttribute("value", responses);
   }
   cell.appendChild(inp);
 
@@ -392,6 +419,16 @@ function addClickableImage(table, idx, name, data) {
     }
   }
 
+  if (data.hasOwnProperty("undoCounter")) {
+    if (data.undoCounter != "") {
+      inp = document.createElement("input");
+      inp.setAttribute("hidden", "");
+      inp.setAttribute("id", "undoCounter_" + data.code);
+      inp.setAttribute("value", data.undoCounter);
+      cell.appendChild(inp);
+    }
+  }
+
   idx += 1;
   row = table.insertRow(idx);
   row.setAttribute("style", "display:none");
@@ -421,6 +458,9 @@ function addText(table, idx, name, data) {
   if (data.hasOwnProperty("tooltip")) {
     cell1.setAttribute("title", data.tooltip);
   }
+  if (data.type === "cycleType") {
+    cell1.setAttribute("hidden", "");
+  }
   cell2.classList.add("field");
   var inp = document.createElement("input");
   inp.setAttribute("id", "input_" + data.code);
@@ -447,6 +487,10 @@ function addText(table, idx, name, data) {
   }
   if (data.hasOwnProperty("disabled")) {
     inp.setAttribute("disabled", "");
+  }
+  if (data.hasOwnProperty("hidden") || data.type === "cycleType") {
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("value", "{}");
   }
   cell2.appendChild(inp);
 
@@ -640,7 +684,8 @@ function addElement(table, idx, data) {
   } else if (
     data.type == "scouter" ||
     data.type == "event" ||
-    data.type == "text"
+    data.type == "text" || 
+    data.type == "cycleType"
   ) {
     idx = addText(table, idx, name, data);
   } else if (
@@ -652,7 +697,7 @@ function addElement(table, idx, data) {
   } else if (
     data.type == "match" ||
     data.type == "team" ||
-    data.type == "number"
+    data.type == "number" 
   ) {
     idx = addNumber(table, idx, name, data);
   } else if ((data.type == 'field_image') ||
@@ -712,10 +757,10 @@ function configure() {
     cell1.innerHTML = `Error parsing configuration file: ${err.message}<br><br>Use a tool like <a href="http://jsonlint.com/">http://jsonlint.com/</a> to help you debug your config file`;
     return -1;
   }
-  if(mydata.hasOwnProperty('dataFormat')) {
+  if (mydata.hasOwnProperty('dataFormat')) {
     dataFormat = mydata.dataFormat;
   }
-  
+
   if (mydata.hasOwnProperty('title')) {
     document.title = mydata.title;
   }
@@ -743,7 +788,7 @@ function configure() {
     // YN - Y or N
     // TF - T or F
     // 10 - 1 or 0
-    if (['YN','TF','10'].includes(mydata.checkboxAs)) {
+    if (['YN', 'TF', '10'].includes(mydata.checkboxAs)) {
       console.log("Setting checkboxAs to " + mydata.checkboxAs);
       checkboxAs = mydata.checkboxAs;
     } else {
@@ -799,18 +844,18 @@ function configure() {
   return 0;
 }
 
-function getRobot(){
+function getRobot() {
   return document.forms.scoutingForm.r.value;
 }
 
 
 function resetRobot() {
-for ( rb of document.getElementsByName('r')) { rb.checked = false };
+  for (rb of document.getElementsByName('r')) { rb.checked = false };
 }
 
 
-function getLevel(){
-return document.forms.scoutingForm.l.value
+function getLevel() {
+  return document.forms.scoutingForm.l.value
 }
 
 
@@ -824,7 +869,7 @@ function validateData() {
         rftitle = "Auto Start Position"
       } else {
         thisInputEl = thisRF instanceof RadioNodeList ? thisRF[0] : thisRF;
-        rftitle = thisInputEl.parentElement.parentElement.children[0].innerHTML.replace("&nbsp;","");
+        rftitle = thisInputEl.parentElement.parentElement.children[0].innerHTML.replace("&nbsp;", "");
       }
       errStr += rf + ": " + rftitle + "\n";
       ret = false;
@@ -842,7 +887,7 @@ function getData(dataFormat) {
   var fd = new FormData();
   var str = [];
 
-  switch(checkboxAs) {
+  switch (checkboxAs) {
     case 'TF':
       checkedChar = 'T';
       uncheckedChar = 'F';
@@ -869,7 +914,7 @@ function getData(dataFormat) {
     if (thisField.type == 'checkbox') {
       var thisFieldValue = thisField.checked ? checkedChar : uncheckedChar;
     } else {
-      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g,"-") : "";
+      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g, "-").replace('[', '').replace(']', '').replace('\u00ab', '\'').replace('\u00bb', '\'') : "";
     }
     fd.append(fieldname, thisFieldValue)
   })
@@ -908,11 +953,9 @@ function updateQRHeader() {
 
 function qr_regenerate() {
   // Validate required pre-match date (event, match, level, robot, scouter)
-  if (!pitScouting) {  
-    if (validateData() == false) {
-      // Don't allow a swipe until all required data is filled in
-      return false
-    }
+  if (validateData() == false) {
+    // Don't allow a swipe until all required data is filled in
+    return false
   }
 
   // Get data
@@ -943,11 +986,14 @@ function clearForm() {
     if (match == NaN) {
       document.getElementById("input_m").value = ""
     } else {
-      document.getElementById("input_m").value = match + 1
+      document.getElementById("input_m").value = match + 1;
+      document.getElementById("input_t").value =
+        getCurrentTeamNumberFromRobot().replace("frc", "");
+      onTeamnameChange();
     }
 
     // Robot
-    resetRobot();
+    //resetRobot();
   }
 
   // Clear XY coordinates
@@ -967,6 +1013,7 @@ function clearForm() {
     if (code.substring(0, 2) == "l_") continue;
     if (code == "e") continue;
     if (code == "s") continue;
+    if (!pitScouting && code === "t") continue;
 
     if (e.className == "clickableImage") {
       e.value = "[]";
@@ -1011,7 +1058,8 @@ function clearForm() {
             }
           }
         } else {
-          e.value = ""
+          if (e.defaultValue != "") e.value = e.defaultValue;
+          else e.value = ""
         }
       } else if (e.type == "checkbox") {
         if (e.checked == true) {
@@ -1071,6 +1119,12 @@ function drawFields(name) {
     var shape = document.getElementById("shape_" + code);
     let shapeArr = shape.value.split(" ");
     var ctx = f.getContext("2d");
+    const dimensions = document.getElementById("dimensions_" + code).value.split(" ");
+    //const heightDimensionRatio = dimensions[0]/dimensions[1];
+    //HARDCODING THIS BECAUSE IMAGE RATIO DOESN'T MATCH DATA RATIO
+    const heightDimensionRatio = 2
+    ctx.canvas.width = ctx.canvas.clientWidth;
+    ctx.canvas.height = ctx.canvas.clientWidth / heightDimensionRatio;
     ctx.clearRect(0, 0, f.width, f.height);
     ctx.drawImage(img, 0, 0, f.width, f.height);
 
@@ -1126,12 +1180,11 @@ function onFieldClick(event) {
     (Math.ceil((event.offsetY / target.getBoundingClientRect().height) * resY) - 1) * resX +
     Math.ceil((event.offsetX / target.getBoundingClientRect().width) * resX);
   let coords = event.offsetX + "," + event.offsetY;
-
   let allowableResponses = document.getElementById("allowableResponses" + base).value;
 
-  if(allowableResponses != "none"){
+  if (allowableResponses != "none") {
     allowableResponsesList = allowableResponses.split(',').map(Number);
-    if (allowableResponsesList.indexOf(box)==-1){
+    if (allowableResponsesList.indexOf(box) == -1) {
       return;
     }
   }
@@ -1313,6 +1366,8 @@ function counter(element, step) {
 
   var ctr = element.getElementsByClassName("counter")[0];
   let cycleTimer = document.getElementById("cycleTimer" + base);
+  let changingInput = document.getElementById("counterValueAttribute" + base);
+  let changingValue = document.getElementById("counterValueInput" + base); 
   var result = parseInt(ctr.value) + step;
 
   if (isNaN(result)) {
@@ -1328,6 +1383,12 @@ function counter(element, step) {
   // If associated with cycleTimer - send New Cycle EVENT
   if (step >= 0 && cycleTimer != null) {
     document.getElementById("cycle_" + cycleTimer.value).click();
+    if (changingInput !== null && changingValue !== null) {
+      var currentInput = document.getElementById("input_" + changingInput.value);
+      let boxArr = Array.from(JSON.parse(currentInput.value));
+      boxArr.push(changingValue.value);
+      currentInput.value = JSON.stringify(boxArr);
+    }
   }
 }
 
@@ -1335,8 +1396,13 @@ function newCycle(event) {
   let timerID = event.firstChild;
   let base = getIdBase(timerID.id);
   let inp = document.getElementById("input" + base);
-  let cycleTime = inp.value;
+  let cycleTime = parseFloat(inp.value);
   inp.value = 0;
+  if (document.getElementById("status" + base).value === "stopped") {
+    document.getElementById("start" + base).click();
+    if (cycleTime === 0)
+      cycleTime = 0.1; //store the value to keep number of cycles in line with field image
+  }
 
   if (cycleTime > 0) {
     let cycleInput = document.getElementById("cycletime" + base);
@@ -1350,15 +1416,19 @@ function newCycle(event) {
       .replace(/\]/g, "")
       .replace(/,/g, ", ");
   }
+
 }
 
 function undoCycle(event) {
   let undoID = event.firstChild;
   let uId = getIdBase(undoID.id);
+  let inp = document.getElementById("input" + uId);
   //Getting rid of last value
   let cycleInput = document.getElementById("cycletime" + uId);
   var tempValue = Array.from(JSON.parse(cycleInput.value));
-  tempValue.pop();
+  if (tempValue.length === 0) return;
+  const removedValue = tempValue.pop();
+  inp.value = parseFloat(inp.value) + parseFloat(removedValue);
   cycleInput.value = JSON.stringify(tempValue);
   let d = document.getElementById("display" + uId);
   d.value = cycleInput.value
@@ -1424,14 +1494,29 @@ function undo(event) {
   //Getting rid of last value
   changingXY = document.getElementById("XY" + getIdBase(undoID.id));
   changingInput = document.getElementById("input" + getIdBase(undoID.id));
-  var tempValue = Array.from(JSON.parse(changingXY.value));
-  tempValue.pop();
-  changingXY.value = JSON.stringify(tempValue);
+  let cycleTimer = document.getElementById("cycleTimer" + getIdBase(undoID.id));
+  let undoCounter = document.getElementById("undoCounter" + getIdBase(undoID.id));
 
   tempValue = Array.from(JSON.parse(changingInput.value));
-  tempValue.pop();
+  const oldInput = tempValue.pop();
   changingInput.value = JSON.stringify(tempValue);
+
+  var tempValue = Array.from(JSON.parse(changingXY.value));
+  if (!isNaN(oldInput)) {
+    tempValue.pop();
+    changingXY.value = JSON.stringify(tempValue);
+  }
+  else {
+    if (undoCounter != null) {
+      document.getElementById("minus_" + undoCounter.value).click();
+    }
+  }
+
+
   drawFields();
+  if (cycleTimer != null) {
+    document.getElementById("undo_" + cycleTimer.value).click();
+  }
 }
 
 function flip(event) {
@@ -1445,13 +1530,13 @@ function flip(event) {
   drawFields();
 }
 
-function displayData(){
+function displayData() {
   document.getElementById('data').innerHTML = getData(dataFormat);
 }
 
-function copyData(){
+function copyData() {
   navigator.clipboard.writeText(getData(dataFormat));
-  document.getElementById('copyButton').setAttribute('value','Copied');
+  document.getElementById('copyButton').setAttribute('value', 'Copied');
 }
 
 window.onload = function () {
