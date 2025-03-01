@@ -6,7 +6,7 @@ var config_data = {
   checkboxAs: "10",
   prematch: [
     {
-      name: "Scouter Initials",
+      name: "Scouter Name",
       code: "s",
       type: "scouter",
       size: 5,
