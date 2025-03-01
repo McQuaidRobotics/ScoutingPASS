@@ -926,10 +926,16 @@ function getData(dataFormat) {
     return str.join(";")
   } else if (dataFormat == "tsv") {
     Array.from(fd.keys()).forEach(thisKey => {
-      str.push("\"" + fd.get(thisKey) + "\"")
+      str.push(fd.get(thisKey))
     });
     return str.join("\t")
-  } else {
+  } else if (dataFormat == "noSpace") {
+    Array.from(fd.keys()).forEach(thisKey => {
+      str.push("\"" + fd.get(thisKey) + "\"")
+    });
+    return str.join("")
+  }
+  else {
     return "unsupported dataFormat"
   }
 }
