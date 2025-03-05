@@ -84,6 +84,12 @@ var config_data =
       "code": "fpa",
       "type": "bool"
     },
+    { "name": "How to Feed Robot?",
+      "code": "feed",
+      "type": "text",
+      "size": 20,
+      "maxSize": 500
+    },
     { "name": "Autos",
       "code": "aut",
       "type": "text",

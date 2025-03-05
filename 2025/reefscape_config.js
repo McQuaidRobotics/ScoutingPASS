@@ -1,12 +1,12 @@
 var requiredFields = ["e", "m", "l", "r", "s"];
 var config_data = {
-  dataFormat: "tsv",
+  dataFormat: "noSpace",
   title: "Scouting PASS 2025",
   page_title: "Reefscape 3173",
   checkboxAs: "10",
   prematch: [
     {
-      name: "Scouter Initials",
+      name: "Scouter Name",
       code: "s",
       type: "scouter",
       size: 5,
