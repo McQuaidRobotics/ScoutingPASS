@@ -3,25 +3,25 @@ import csv
 def parse_scanner_output(scanner_output):
     data = scanner_output.strip('"').split('""')
 
-    if len(data) < 14:
+    if len(data) < 15:
         print("Error: Input does not have enough fields.")
         return None, None, None
 
 
-    tele_12 = data[12].strip('"')
     tele_13 = data[13].strip('"')
-    tele_12_values = tele_12.split(',')
+    tele_14 = data[14].strip('"')
     tele_13_values = tele_13.split(',')
+    tele_14_values = tele_14.split(',')
     teleop_values = []
 
-    for i in range(max(len(tele_12_values), len(tele_13_values))):
+    for i in range(max(len(tele_13_values), len(tele_14_values))):
         row = data[:6]
-        if i < len(tele_12_values):
-            row.append(tele_12_values[i])
         if i < len(tele_13_values):
             row.append(tele_13_values[i])
+        if i < len(tele_14_values):
+            row.append(tele_14_values[i])
         teleop_values.append(row)
-    other_values = data[:6] + [data[7]] + data[7:12] + data[14:]
+    other_values = data[:6]
 
     return data, teleop_values, other_values
 
