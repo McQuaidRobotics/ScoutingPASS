@@ -264,6 +264,7 @@ input:disabled {
   color: #fff;
   -webkit-text-fill-color: #fff;
   opacity: 1;
+  appearance: none;
 }
 
 input,
