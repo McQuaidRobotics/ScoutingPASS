@@ -86,9 +86,14 @@ var config_data =
     },
     { "name": "How to Feed Robot?",
       "code": "feed",
-      "type": "text",
-      "size": 20,
-      "maxSize": 500
+      "type": "radio",
+      "choices": {
+        "v": "Vertical<br>",
+        "h": "Horizontal<br>",
+        "e": "Either<br>",
+        "o": "Other"
+      },
+      "defaultValue": "v"
     },
     { "name": "Autos",
       "code": "aut",

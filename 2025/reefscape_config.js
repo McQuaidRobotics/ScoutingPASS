@@ -63,6 +63,7 @@ var config_data = {
     { name: "Auto Coral Level 1", code: "ac1", type: "counter" },
     { name: "Auto Algae Processor", code: "aap", type: "counter" },
     { name: "Auto Algae Net", code: "aan", type: "counter" },
+    { name: "Leave", code: "al", type: "bool" },
     { name: "Teleop", code: "t-div", title: "Teleoperated", type: "divider" },
     {
       name: "Cycle Timer",

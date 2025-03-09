@@ -160,7 +160,14 @@ function addTimer(table, idx, name, data) {
     def.setAttribute("id", "default_" + data.code);
     def.setAttribute("type", "hidden");
     def.setAttribute("value", data.defaultValue);
-    cell2.appendChild(def);
+    cell.appendChild(def);
+  }
+  if (data.hasOwnProperty("storeCycleType")) {
+    var inp = document.createElement("input");
+    inp.setAttribute("type", "hidden");
+    inp.setAttribute("id", "storeCycleType_" + data.code);
+    inp.setAttribute("value", data.storeCycleType);
+    cell.appendChild(inp);
   }
 
   return idx + 1;
@@ -187,6 +194,8 @@ function addCounter(table, idx, name, data) {
   button1.setAttribute("onclick", "counter(this.parentElement, -1)");
   button1.setAttribute("value", "-");
   button1.setAttribute("class", "decrementButton");
+  if (data.hasOwnProperty('cycleTimer') && data.hasOwnProperty('valueInput') && data.hasOwnProperty('valueAttribute'))
+    button1.setAttribute("style", "display:none");
   cell2.appendChild(button1);
 
   var inp = document.createElement("input");
@@ -993,9 +1002,14 @@ function clearForm() {
       document.getElementById("input_m").value = ""
     } else {
       document.getElementById("input_m").value = match + 1;
+      try { 
       document.getElementById("input_t").value =
         getCurrentTeamNumberFromRobot().replace("frc", "");
       onTeamnameChange();
+      }
+      catch (err) {
+        console.log("Error: " + err.message);
+      }
     }
 
     // Robot
@@ -1442,6 +1456,18 @@ function undoCycle(event) {
     .replace(/\[/g, "")
     .replace(/\]/g, "")
     .replace(/,/g, ", ");
+  
+  
+  let storeCycleType = document.getElementById("storeCycleType" + uId);
+  if (storeCycleType !== null) {
+    let cycleTypeInput = document.getElementById("input_" + storeCycleType.value);
+    let cycleTypeTempValue = Array.from(JSON.parse(cycleTypeInput.value));
+    const removeElement = cycleTypeTempValue.pop();
+    cycleTypeInput.value = JSON.stringify(cycleTypeTempValue);
+    const removeButton = document.getElementById("minus_" + removeElement);
+    removeButton.click();
+  }
+
 }
 
 function resetTimer(event) {
