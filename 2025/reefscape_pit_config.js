@@ -34,10 +34,10 @@ var config_data =
       "code": "drv",
       "type": "radio",
       "choices": {
-        "s": "Swerve<br>",
-        "w": "West Coast/Tank<br>",
-        "m": "Mechanum<br>",
-        "o": "Other"
+        "Swerve": "Swerve<br>",
+        "Tank": "West Coast/Tank<br>",
+        "Mechanum": "Mechanum<br>",
+        "Other": "Other"
       },
       "defaultValue": "s"
     },
@@ -64,11 +64,11 @@ var config_data =
       "code": "mot",
       "type": "radio",
       "choices": {
-        "n": "Neo<br>",
-        "f": "Falcon<br>",
-        "c": "CIM<br>",
-        "k": "Kraken<br>",
-        "x": "Other<br>"
+        "Neo": "Neo<br>",
+        "Falcon": "Falcon<br>",
+        "CIM": "CIM<br>",
+        "Kraken": "Kraken<br>",
+        "Other": "Other<br>"
       },
       "defaultValue":"f"
     },
@@ -88,12 +88,12 @@ var config_data =
       "code": "feed",
       "type": "radio",
       "choices": {
-        "v": "Vertical<br>",
-        "h": "Horizontal<br>",
-        "e": "Either<br>",
-        "o": "Other"
+        "Vertical": "Vertical<br>",
+        "Horizontal": "Horizontal<br>",
+        "Either": "Either<br>",
+        "Other": "Other"
       },
-      "defaultValue": "v"
+      "defaultValue": "Vertical"
     },
     { "name": "Autos",
       "code": "aut",

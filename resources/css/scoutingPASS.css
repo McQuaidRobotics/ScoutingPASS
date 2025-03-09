@@ -264,8 +264,8 @@ input,
 select {
   font-size: 16px;
   font-family: roboto;
-  color: #fff;
-  -webkit-text-fill-color: #fff;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
   -webkit-background-clip: text;
   background: black;
 }
