@@ -8,18 +8,19 @@ def parse_scanner_output(scanner_output):
         return None, None, None
 
 
-    tele_13 = data[13].strip('"')
-    tele_14 = data[14].strip('"')
-    tele_13_values = tele_13.split(',')
-    tele_14_values = tele_14.split(',')
+    tele_15 = data[15].strip('"')
+    tele_16 = data[16].strip('"')
+    tele_15_values = tele_15.split(',')
+    tele_16_values = tele_16.split(',')
     teleop_values = []
 
-    for i in range(max(len(tele_13_values), len(tele_14_values))):
+    for i in range(max(len(tele_15_values), len(tele_16_values))):
         row = data[:6]
-        if i < len(tele_13_values):
-            row.append(tele_13_values[i])
-        if i < len(tele_14_values):
-            row.append(tele_14_values[i])
+        row.append(i)
+        if i < len(tele_15_values):
+            row.append(tele_15_values[i])
+        if i < len(tele_16_values):
+            row.append(tele_16_values[i])
         teleop_values.append(row)
     other_values = data[:6]
 

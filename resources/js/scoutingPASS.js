@@ -12,7 +12,7 @@ var xThreshold = 0.3;
 var slide = 0;
 var enableGoogleSheets = false;
 var pitScouting = false;
-var checkboxAs = 'YN';
+var checkboxAs = "YN";
 
 // Options
 var options = {
@@ -50,7 +50,7 @@ function addTimer(table, idx, name, data) {
     var ct = document.createElement("input");
     ct.setAttribute("type", "hidden");
     ct.setAttribute("id", "cycletime_" + data.code);
-    if (enableGoogleSheets && data.hasOwnProperty('gsCol')) {
+    if (enableGoogleSheets && data.hasOwnProperty("gsCol")) {
       ct.setAttribute("name", data.gsCol);
     } else {
       ct.setAttribute("name", data.code);
@@ -81,14 +81,17 @@ function addTimer(table, idx, name, data) {
   }
   inp.setAttribute("id", "input_" + data.code);
   inp.setAttribute("type", "text");
-  if (data.type != 'cycle') {
-    if (enableGoogleSheets && data.hasOwnProperty('gsCol')) {
+  if (data.type != "cycle") {
+    if (enableGoogleSheets && data.hasOwnProperty("gsCol")) {
       inp.setAttribute("name", data.gsCol);
     } else {
       inp.setAttribute("name", data.code);
     }
   }
-  inp.setAttribute("style", "background-color: black; color: white;border: none; text-align: center;");
+  inp.setAttribute(
+    "style",
+    "background-color: black; color: white;border: none; text-align: center;"
+  );
   inp.setAttribute("disabled", "");
   inp.setAttribute("value", 0);
   inp.setAttribute("size", 7);
@@ -194,7 +197,11 @@ function addCounter(table, idx, name, data) {
   button1.setAttribute("onclick", "counter(this.parentElement, -1)");
   button1.setAttribute("value", "-");
   button1.setAttribute("class", "decrementButton");
-  if (data.hasOwnProperty('cycleTimer') && data.hasOwnProperty('valueInput') && data.hasOwnProperty('valueAttribute'))
+  if (
+    data.hasOwnProperty("cycleTimer") &&
+    data.hasOwnProperty("valueInput") &&
+    data.hasOwnProperty("valueAttribute")
+  )
     button1.setAttribute("style", "display:none");
   cell2.appendChild(button1);
 
@@ -225,9 +232,9 @@ function addCounter(table, idx, name, data) {
   button2.setAttribute("class", "incrementButton");
   cell2.appendChild(button2);
 
-  if (data.hasOwnProperty('cycleTimer')) {
+  if (data.hasOwnProperty("cycleTimer")) {
     if (data.cycleTimer != "") {
-      inp = document.createElement('input');
+      inp = document.createElement("input");
       inp.setAttribute("hidden", "");
       inp.setAttribute("id", "cycleTimer_" + data.code);
       inp.setAttribute("value", data.cycleTimer);
@@ -235,20 +242,23 @@ function addCounter(table, idx, name, data) {
     }
   }
 
-  if (data.hasOwnProperty('valueInput') && data.hasOwnProperty('valueAttribute')) {
-    inp = document.createElement('input');
+  if (
+    data.hasOwnProperty("valueInput") &&
+    data.hasOwnProperty("valueAttribute")
+  ) {
+    inp = document.createElement("input");
     inp.setAttribute("hidden", "");
     inp.setAttribute("id", "counterValueAttribute_" + data.code);
     inp.setAttribute("value", data.valueAttribute);
     cell.appendChild(inp);
-    inp = document.createElement('input');
+    inp = document.createElement("input");
     inp.setAttribute("hidden", "");
     inp.setAttribute("id", "counterValueInput_" + data.code);
     inp.setAttribute("value", data.valueInput);
     cell.appendChild(inp);
   }
 
-  if (data.hasOwnProperty('defaultValue')) {
+  if (data.hasOwnProperty("defaultValue")) {
     var def = document.createElement("input");
     def.setAttribute("id", "default_" + data.code);
     def.setAttribute("type", "hidden");
@@ -362,26 +372,28 @@ function addClickableImage(table, idx, name, data) {
   inp.setAttribute("hidden", "");
   inp.setAttribute("id", "clickRestriction_" + data.code);
   inp.setAttribute("value", "none");
-  if (data.hasOwnProperty('clickRestriction')) {
-    if ((data.clickRestriction == "one") ||
-      (data.clickRestriction == "onePerBox")) {
+  if (data.hasOwnProperty("clickRestriction")) {
+    if (
+      data.clickRestriction == "one" ||
+      data.clickRestriction == "onePerBox"
+    ) {
       inp.setAttribute("value", data.clickRestriction);
     }
   }
   cell.appendChild(inp);
 
-  inp = document.createElement('input');
+  inp = document.createElement("input");
   inp.setAttribute("hidden", "");
   inp.setAttribute("id", "allowableResponses_" + data.code);
   inp.setAttribute("value", "none");
-  if (data.hasOwnProperty('allowableResponses')) {
-    let responses = data.allowableResponses.split(' ').map(Number)
-    console.log(responses)
+  if (data.hasOwnProperty("allowableResponses")) {
+    let responses = data.allowableResponses.split(" ").map(Number);
+    console.log(responses);
     inp.setAttribute("value", responses);
   }
   cell.appendChild(inp);
 
-  inp = document.createElement('input');
+  inp = document.createElement("input");
   inp.setAttribute("hidden", "");
   inp.setAttribute("id", "dimensions_" + data.code);
   inp.setAttribute("value", "12 6");
@@ -485,8 +497,8 @@ function addText(table, idx, name, data) {
   if (data.hasOwnProperty("maxSize")) {
     inp.setAttribute("maxLength", data.maxSize);
   }
-  if (data.hasOwnProperty('defaultValue')) {
-    if (data.type == 'event') {
+  if (data.hasOwnProperty("defaultValue")) {
+    if (data.type == "event") {
       data.defaultValue = data.defaultValue.toLowerCase();
     }
     inp.setAttribute("value", data.defaultValue);
@@ -674,9 +686,9 @@ function addCheckbox(table, idx, name, data) {
 
 function addElement(table, idx, data) {
   var type = null;
-  var name = 'Default Name';
-  if (data.hasOwnProperty('name')) {
-    name = data.name
+  var name = "Default Name";
+  if (data.hasOwnProperty("name")) {
+    name = data.name;
   }
   if (data.hasOwnProperty("type")) {
     type = data.type;
@@ -693,7 +705,7 @@ function addElement(table, idx, data) {
   } else if (
     data.type == "scouter" ||
     data.type == "event" ||
-    data.type == "text" || 
+    data.type == "text" ||
     data.type == "cycleType"
   ) {
     idx = addText(table, idx, name, data);
@@ -706,11 +718,10 @@ function addElement(table, idx, data) {
   } else if (
     data.type == "match" ||
     data.type == "team" ||
-    data.type == "number" 
+    data.type == "number"
   ) {
     idx = addNumber(table, idx, name, data);
-  } else if ((data.type == 'field_image') ||
-    (data.type == 'clickable_image')) {
+  } else if (data.type == "field_image" || data.type == "clickable_image") {
     idx = addClickableImage(table, idx, name, data);
   } else if (
     data.type == "bool" ||
@@ -720,8 +731,7 @@ function addElement(table, idx, data) {
     idx = addCheckbox(table, idx, name, data);
   } else if (data.type == "counter") {
     idx = addCounter(table, idx, name, data);
-  } else if ((data.type == 'timer') ||
-    (data.type == 'cycle')) {
+  } else if (data.type == "timer" || data.type == "cycle") {
     idx = addTimer(table, idx, name, data);
   } else if (data.type == "divider") {
     idx = addDivider(table, idx, name, data);
@@ -766,38 +776,38 @@ function configure() {
     cell1.innerHTML = `Error parsing configuration file: ${err.message}<br><br>Use a tool like <a href="http://jsonlint.com/">http://jsonlint.com/</a> to help you debug your config file`;
     return -1;
   }
-  if (mydata.hasOwnProperty('dataFormat')) {
+  if (mydata.hasOwnProperty("dataFormat")) {
     dataFormat = mydata.dataFormat;
   }
 
-  if (mydata.hasOwnProperty('title')) {
+  if (mydata.hasOwnProperty("title")) {
     document.title = mydata.title;
   }
 
-  if (mydata.hasOwnProperty('page_title')) {
+  if (mydata.hasOwnProperty("page_title")) {
     for (pgtitle of document.getElementsByClassName("page_title")) {
       pgtitle.innerHTML = mydata.page_title;
     }
   }
 
-  if (mydata.hasOwnProperty('enable_google_sheets')) {
-    if (mydata.enable_google_sheets.toUpperCase() == 'TRUE') {
+  if (mydata.hasOwnProperty("enable_google_sheets")) {
+    if (mydata.enable_google_sheets.toUpperCase() == "TRUE") {
       enableGoogleSheets = true;
     }
   }
 
-  if (mydata.hasOwnProperty('pitConfig')) {
-    if (mydata.pitConfig.toUpperCase() == 'TRUE') {
+  if (mydata.hasOwnProperty("pitConfig")) {
+    if (mydata.pitConfig.toUpperCase() == "TRUE") {
       pitScouting = true;
     }
   }
 
-  if (mydata.hasOwnProperty('checkboxAs')) {
+  if (mydata.hasOwnProperty("checkboxAs")) {
     // Supported modes
     // YN - Y or N
     // TF - T or F
     // 10 - 1 or 0
-    if (['YN', 'TF', '10'].includes(mydata.checkboxAs)) {
+    if (["YN", "TF", "10"].includes(mydata.checkboxAs)) {
       console.log("Setting checkboxAs to " + mydata.checkboxAs);
       checkboxAs = mydata.checkboxAs;
     } else {
@@ -854,19 +864,18 @@ function configure() {
 }
 
 function getRobot() {
-  return document.forms.scoutingForm.r.value;
+  return document.forms?.scoutingForm?.r?.value;
 }
-
 
 function resetRobot() {
-  for (rb of document.getElementsByName('r')) { rb.checked = false };
+  for (rb of document.getElementsByName("r")) {
+    rb.checked = false;
+  }
 }
-
 
 function getLevel() {
-  return document.forms.scoutingForm.l.value
+  return document.forms.scoutingForm.l.value;
 }
-
 
 function validateData() {
   var ret = true;
@@ -875,10 +884,14 @@ function validateData() {
     var thisRF = document.forms.scoutingForm[rf];
     if (thisRF.value == "[]" || thisRF.value.length == 0) {
       if (rf == "as") {
-        rftitle = "Auto Start Position"
+        rftitle = "Auto Start Position";
       } else {
         thisInputEl = thisRF instanceof RadioNodeList ? thisRF[0] : thisRF;
-        rftitle = thisInputEl.parentElement.parentElement.children[0].innerHTML.replace("&nbsp;", "");
+        rftitle =
+          thisInputEl.parentElement.parentElement.children[0].innerHTML.replace(
+            "&nbsp;",
+            ""
+          );
       }
       errStr += rf + ": " + rftitle + "\n";
       ret = false;
@@ -897,71 +910,82 @@ function getData(dataFormat) {
   var str = [];
 
   switch (checkboxAs) {
-    case 'TF':
-      checkedChar = 'T';
-      uncheckedChar = 'F';
+    case "TF":
+      checkedChar = "T";
+      uncheckedChar = "F";
       break;
-    case '10':
-      checkedChar = '1';
-      uncheckedChar = '0';
+    case "10":
+      checkedChar = "1";
+      uncheckedChar = "0";
       break;
     default:
-      var checkedChar = 'Y';
-      var uncheckedChar = 'N';
+      var checkedChar = "Y";
+      var uncheckedChar = "N";
   }
 
   // collect the names of all the elements in the form
-  var fieldnames = Array.from(Form.elements, formElmt => formElmt.name);
+  var fieldnames = Array.from(Form.elements, (formElmt) => formElmt.name);
 
   // make sure to add the name attribute only to elements from which you want to collect values.  Radio button groups all share the same name
   // so those element names need to be de-duplicated here as well.
-  fieldnames.forEach((fieldname) => { if (fieldname != "" && !UniqueFieldNames.includes(fieldname)) { UniqueFieldNames.push(fieldname) } });
+  fieldnames.forEach((fieldname) => {
+    if (fieldname != "" && !UniqueFieldNames.includes(fieldname)) {
+      UniqueFieldNames.push(fieldname);
+    }
+  });
 
   UniqueFieldNames.forEach((fieldname) => {
     var thisField = Form[fieldname];
 
-    if (thisField.type == 'checkbox') {
+    if (thisField.type == "checkbox") {
       var thisFieldValue = thisField.checked ? checkedChar : uncheckedChar;
     } else {
-      var thisFieldValue = thisField.value ? thisField.value.replace(/"/g, '').replace(/;/g, "-").replace('[', '').replace(']', '').replace('\u00ab', '\'').replace('\u00bb', '\'') : "";
+      var thisFieldValue = thisField.value
+        ? thisField.value
+            .replace(/"/g, "")
+            .replace(/;/g, "-")
+            .replace("[", "")
+            .replace("]", "")
+            .replace("\u00ab", "'")
+            .replace("\u00bb", "'")
+        : "";
     }
-    fd.append(fieldname, thisFieldValue)
-  })
+    fd.append(fieldname, thisFieldValue);
+  });
 
   if (dataFormat == "kvs") {
-    Array.from(fd.keys()).forEach(thisKey => {
-      str.push(thisKey + "=" + fd.get(thisKey))
+    Array.from(fd.keys()).forEach((thisKey) => {
+      str.push(thisKey + "=" + fd.get(thisKey));
     });
-    return str.join(";")
+    return str.join(";");
   } else if (dataFormat == "tsv") {
-    Array.from(fd.keys()).forEach(thisKey => {
-      str.push(fd.get(thisKey))
+    Array.from(fd.keys()).forEach((thisKey) => {
+      str.push(fd.get(thisKey));
     });
-    return str.join("\t")
+    return str.join("\t");
   } else if (dataFormat == "noSpace") {
-    Array.from(fd.keys()).forEach(thisKey => {
-      str.push("\"" + fd.get(thisKey) + "\"")
+    Array.from(fd.keys()).forEach((thisKey) => {
+      str.push('"' + fd.get(thisKey) + '"');
     });
-    return str.join("")
-  }
-  else {
-    return "unsupported dataFormat"
+    return str.join("");
+  } else {
+    return "unsupported dataFormat";
   }
 }
 
 function updateQRHeader() {
-  let str = 'Event: !EVENT! Match: !MATCH! Robot: !ROBOT! Team: !TEAM!';
+  let str =
+    "Event: !EVENT! Match: !MATCH! Robot: !ROBOT! Team: !TEAM! Date: !DATE!"
+      .replace("!DATE!", new Date().toLocaleString())
+      .replace("!EVENT!", document.getElementById("input_e")?.value)
+      .replace("!MATCH!", document.getElementById("input_m")?.value)
+      .replace("!ROBOT!", getRobot())
+      .replace("!TEAM!", document.getElementById("input_t")?.value);
 
-  if (!pitScouting) {
-    str = str
-      .replace('!EVENT!', document.getElementById("input_e").value)
-      .replace('!MATCH!', document.getElementById("input_m").value)
-      .replace('!ROBOT!', document.getElementById("display_r").value)
-      .replace('!TEAM!', document.getElementById("input_t").value);
-  } else {
-    str = 'Pit Scouting - Team !TEAM!'
-      .replace('!TEAM!', document.getElementById("input_t").value);
-  }
+  if (pitScouting)
+    str = "Pit Scouting - Team !TEAM! Date: !DATE!"
+      .replace("!TEAM!", document.getElementById("input_t").value)
+      .replace("!DATE!", new Date().toLocaleString());
 
   document.getElementById("display_qr-info").textContent = str;
 }
@@ -970,11 +994,11 @@ function qr_regenerate() {
   // Validate required pre-match date (event, match, level, robot, scouter)
   if (validateData() == false) {
     // Don't allow a swipe until all required data is filled in
-    return false
+    return false;
   }
 
   // Get data
-  data = getData(dataFormat)
+  data = getData(dataFormat);
 
   // Regenerate QR Code
   qr.makeCode(data);
@@ -997,17 +1021,16 @@ function clearForm() {
     swipePage(-5);
 
     // Increment match
-    match = parseInt(document.getElementById("input_m").value)
+    match = parseInt(document.getElementById("input_m").value);
     if (match == NaN) {
-      document.getElementById("input_m").value = ""
+      document.getElementById("input_m").value = "";
     } else {
       document.getElementById("input_m").value = match + 1;
-      try { 
-      document.getElementById("input_t").value =
-        getCurrentTeamNumberFromRobot().replace("frc", "");
-      onTeamnameChange();
-      }
-      catch (err) {
+      try {
+        document.getElementById("input_t").value =
+          getCurrentTeamNumberFromRobot().replace("frc", "");
+        onTeamnameChange();
+      } catch (err) {
         console.log("Error: " + err.message);
       }
     }
@@ -1056,10 +1079,12 @@ function clearForm() {
       }
     } else {
       if (e.type == "number" || e.type == "text" || e.type == "hidden") {
-        if ((e.className == "counter") ||
-          (e.className == "timer") ||
-          (e.className == "cycle")) {
-          e.value = 0
+        if (
+          e.className == "counter" ||
+          e.className == "timer" ||
+          e.className == "cycle"
+        ) {
+          e.value = 0;
           if (e.className == "timer" || e.className == "cycle") {
             // Stop interval
             timerStatus = document.getElementById("status_" + code);
@@ -1071,15 +1096,15 @@ function clearForm() {
             if (intervalId != "") {
               clearInterval(intervalId);
             }
-            intervalIdField.value = '';
+            intervalIdField.value = "";
             if (e.className == "cycle") {
-              document.getElementById("cycletime_" + code).value = "[]"
-              document.getElementById("display_" + code).value = ""
+              document.getElementById("cycletime_" + code).value = "[]";
+              document.getElementById("display_" + code).value = "";
             }
           }
         } else {
           if (e.defaultValue != "") e.value = e.defaultValue;
-          else e.value = ""
+          else e.value = "";
         }
       } else if (e.type == "checkbox") {
         if (e.checked == true) {
@@ -1139,10 +1164,12 @@ function drawFields(name) {
     var shape = document.getElementById("shape_" + code);
     let shapeArr = shape.value.split(" ");
     var ctx = f.getContext("2d");
-    const dimensions = document.getElementById("dimensions_" + code).value.split(" ");
+    const dimensions = document
+      .getElementById("dimensions_" + code)
+      .value.split(" ");
     //const heightDimensionRatio = dimensions[0]/dimensions[1];
     //HARDCODING THIS BECAUSE IMAGE RATIO DOESN'T MATCH DATA RATIO
-    const heightDimensionRatio = 2
+    const heightDimensionRatio = 2;
     ctx.canvas.width = ctx.canvas.clientWidth;
     ctx.canvas.height = ctx.canvas.clientWidth / heightDimensionRatio;
     ctx.clearRect(0, 0, f.width, f.height);
@@ -1197,13 +1224,17 @@ function onFieldClick(event) {
 
   //Turns coordinates into a numeric box
   let box =
-    (Math.ceil((event.offsetY / target.getBoundingClientRect().height) * resY) - 1) * resX +
+    (Math.ceil((event.offsetY / target.getBoundingClientRect().height) * resY) -
+      1) *
+      resX +
     Math.ceil((event.offsetX / target.getBoundingClientRect().width) * resX);
   let coords = event.offsetX + "," + event.offsetY;
-  let allowableResponses = document.getElementById("allowableResponses" + base).value;
+  let allowableResponses = document.getElementById(
+    "allowableResponses" + base
+  ).value;
 
   if (allowableResponses != "none") {
-    allowableResponsesList = allowableResponses.split(',').map(Number);
+    allowableResponsesList = allowableResponses.split(",").map(Number);
     if (allowableResponsesList.indexOf(box) == -1) {
       return;
     }
@@ -1220,8 +1251,7 @@ function onFieldClick(event) {
   let boxArr = Array.from(JSON.parse(changingInput.value));
   let xyArr = Array.from(JSON.parse(changingXY.value));
 
-  if ((toggleClick.toLowerCase() == 'true') &&
-    (boxArr.includes(box))) {
+  if (toggleClick.toLowerCase() == "true" && boxArr.includes(box)) {
     // Remove it
     let idx = boxArr.indexOf(box);
     boxArr.splice(idx, 1);
@@ -1387,7 +1417,7 @@ function counter(element, step) {
   var ctr = element.getElementsByClassName("counter")[0];
   let cycleTimer = document.getElementById("cycleTimer" + base);
   let changingInput = document.getElementById("counterValueAttribute" + base);
-  let changingValue = document.getElementById("counterValueInput" + base); 
+  let changingValue = document.getElementById("counterValueInput" + base);
   var result = parseInt(ctr.value) + step;
 
   if (isNaN(result)) {
@@ -1404,7 +1434,9 @@ function counter(element, step) {
   if (step >= 0 && cycleTimer != null) {
     document.getElementById("cycle_" + cycleTimer.value).click();
     if (changingInput !== null && changingValue !== null) {
-      var currentInput = document.getElementById("input_" + changingInput.value);
+      var currentInput = document.getElementById(
+        "input_" + changingInput.value
+      );
       let boxArr = Array.from(JSON.parse(currentInput.value));
       boxArr.push(changingValue.value);
       currentInput.value = JSON.stringify(boxArr);
@@ -1420,8 +1452,7 @@ function newCycle(event) {
   inp.value = 0;
   if (document.getElementById("status" + base).value === "stopped") {
     document.getElementById("start" + base).click();
-    if (cycleTime === 0)
-      cycleTime = 0.1; //store the value to keep number of cycles in line with field image
+    if (cycleTime === 0) cycleTime = 0.1; //store the value to keep number of cycles in line with field image
   }
 
   if (cycleTime > 0) {
@@ -1436,7 +1467,6 @@ function newCycle(event) {
       .replace(/\]/g, "")
       .replace(/,/g, ", ");
   }
-
 }
 
 function undoCycle(event) {
@@ -1456,18 +1486,18 @@ function undoCycle(event) {
     .replace(/\[/g, "")
     .replace(/\]/g, "")
     .replace(/,/g, ", ");
-  
-  
+
   let storeCycleType = document.getElementById("storeCycleType" + uId);
   if (storeCycleType !== null) {
-    let cycleTypeInput = document.getElementById("input_" + storeCycleType.value);
+    let cycleTypeInput = document.getElementById(
+      "input_" + storeCycleType.value
+    );
     let cycleTypeTempValue = Array.from(JSON.parse(cycleTypeInput.value));
     const removeElement = cycleTypeTempValue.pop();
     cycleTypeInput.value = JSON.stringify(cycleTypeTempValue);
     const removeButton = document.getElementById("minus_" + removeElement);
     removeButton.click();
   }
-
 }
 
 function resetTimer(event) {
@@ -1527,7 +1557,9 @@ function undo(event) {
   changingXY = document.getElementById("XY" + getIdBase(undoID.id));
   changingInput = document.getElementById("input" + getIdBase(undoID.id));
   let cycleTimer = document.getElementById("cycleTimer" + getIdBase(undoID.id));
-  let undoCounter = document.getElementById("undoCounter" + getIdBase(undoID.id));
+  let undoCounter = document.getElementById(
+    "undoCounter" + getIdBase(undoID.id)
+  );
 
   tempValue = Array.from(JSON.parse(changingInput.value));
   const oldInput = tempValue.pop();
@@ -1537,13 +1569,11 @@ function undo(event) {
   if (!isNaN(oldInput)) {
     tempValue.pop();
     changingXY.value = JSON.stringify(tempValue);
-  }
-  else {
+  } else {
     if (undoCounter != null) {
       document.getElementById("minus_" + undoCounter.value).click();
     }
   }
-
 
   drawFields();
   if (cycleTimer != null) {
@@ -1563,12 +1593,12 @@ function flip(event) {
 }
 
 function displayData() {
-  document.getElementById('data').innerHTML = getData(dataFormat);
+  document.getElementById("data").innerHTML = getData(dataFormat);
 }
 
 function copyData() {
   navigator.clipboard.writeText(getData(dataFormat));
-  document.getElementById('copyButton').setAttribute('value', 'Copied');
+  document.getElementById("copyButton").setAttribute("value", "Copied");
 }
 
 window.onload = function () {
