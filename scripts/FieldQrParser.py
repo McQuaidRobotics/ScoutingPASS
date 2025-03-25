@@ -26,13 +26,23 @@ def parse_scanner_output(scanner_output):
 
     return data, teleop_values, other_values
 
+def is_unique_row(filename, row):
+    try:
+        with open(filename, 'r', newline='') as file:
+            reader = csv.reader(file)
+            for existing_row in reader:
+                if existing_row[1:6] == row[1:6]:
+                    return False
+    except FileNotFoundError:
+        return True
+    return True
+
 def write_to_csv(filename, rows):
     rows = [[value.strip('"') for value in row] for row in rows]
     try:
         with open(filename, 'a', newline='') as file:
             writer = csv.writer(file, quoting=csv.QUOTE_MINIMAL)
             writer.writerows(rows)
-            file.close()
     except Exception as e:
         print(f"Error writing to file {filename}: {e}")
 
@@ -45,9 +55,12 @@ if __name__ == "__main__":
         full_data, teleop_data, other_data = parse_scanner_output(user_input)
 
         if full_data:
-            write_to_csv("full.csv", [full_data])
-            write_to_csv("teleop.csv", teleop_data)
-            write_to_csv("other.csv", [other_data])
-            print("Data successfully written to CSV files.")
+            if is_unique_row("full.csv", full_data):
+                write_to_csv("full.csv", [full_data])
+                write_to_csv("teleop.csv", teleop_data)
+                write_to_csv("other.csv", [other_data])
+                print("Data successfully written to CSV files.")
+            else:
+                print("Duplicate row found, skipping write.")
         else:
             print("Invalid input format. Please try again.")
