@@ -16,7 +16,7 @@ def parse_scanner_output(scanner_output):
 
     for i in range(max(len(tele_15_values), len(tele_16_values))):
         row = data[:6]
-        row.append(i)
+        row.append(str(i))
         if i < len(tele_15_values):
             row.append(tele_15_values[i])
         if i < len(tele_16_values):
