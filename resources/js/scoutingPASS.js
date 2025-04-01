@@ -1018,7 +1018,7 @@ function clearForm() {
   if (pitScouting) {
     swipePage(-1);
   } else {
-    swipePage(-5);
+    swipePage(-1);
 
     // Increment match
     match = parseInt(document.getElementById("input_m").value);
