@@ -17,7 +17,7 @@ var config_data = {
       name: "Event",
       code: "e",
       type: "event",
-      defaultValue: "2025nytr",
+      defaultValue: "2025ohcl",
       required: "true",
       disabled: "true",
     },
@@ -109,6 +109,7 @@ var config_data = {
       valueAttribute: "tcty",
     },
     { name: "Teleop Coral Miss", code: "tcm", type: "counter" },
+    { name: "Teleop Algae Removed From Reef", code: "tar", type: "counter" },
     {
       name: "Teleop Algae Processor",
       code: "tap",
@@ -126,7 +127,6 @@ var config_data = {
       valueAttribute: "tcty",
     },
     { name: "Teleop Algae Miss", code: "tam", type: "counter" },
-    { name: "Teleop Algae Removed From Reef", code: "tar", type: "counter" },
     { name: "Pickup Coral From Floor", code: "tpf", type: "bool" },
     { name: "Pickup From Coral Station", code: "tps", type: "bool" },
     { name: "Endgame", code: "e-div", title: "Endgame", type: "divider" },
@@ -151,6 +151,8 @@ var config_data = {
     { name: "Was Defended", code: "pwd", type: "bool" },
     { name: "Died/Immobilized", code: "die", type: "bool" },
     { name: "Tippy<br>(almost tipped over)", code: "tip", type: "bool" },
+    { name: "Good Driver", code: "pgd", type: "bool" },
+    { name: "Bad Driver", code: "pbd", type: "bool" },
     { name: "Yellow Card", code: "pyc", title: "Yellow Card", type: "bool" },
     { name: "Red Card", code: "prc", title: "Red Card", type: "bool" },
     {

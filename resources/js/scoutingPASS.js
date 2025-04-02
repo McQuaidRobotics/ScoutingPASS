@@ -1601,6 +1601,33 @@ function copyData() {
   document.getElementById("copyButton").setAttribute("value", "Copied");
 }
 
+/**
+ * Warns the user before navigating away if there is unsaved information in the form.
+ */
+function warnBeforeUnload(event) {
+  const form = document.forms.scoutingForm;
+  let isFormDirty = false;
+
+  // Check if any form field has been modified
+  for (let element of form.elements) {
+    if (element.type === "checkbox" && element.checked !== element.defaultChecked) {
+      isFormDirty = true;
+      break;
+    } else if ((element.type !== "checkbox" && element.type !== "button" && element.type !== "submit") && element.value !== element.defaultValue) {
+      isFormDirty = true;
+      break;
+    }
+  }
+
+  if (isFormDirty) {
+    event.preventDefault();
+    event.returnValue = true;
+  }
+}
+
+// Attach the warning function to the beforeunload event
+window.addEventListener("beforeunload", warnBeforeUnload);
+
 window.onload = function () {
   let ret = configure();
   if (ret != -1) {
