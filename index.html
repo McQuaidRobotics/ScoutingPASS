@@ -18,6 +18,15 @@
   </head>
 
   <body>
+    <script>
+      window.onbeforeunload = function (event) {
+        const message = "Are you sure you want to leave this page?";
+
+        event.returnValue = message;
+        return message;
+      };
+    </script>
+
     <form id="scoutingForm" onsubmit="return false" name="scoutingForm">
       <div id="main-panel-holder">
         <div id="prematch" class="main-panel" style="background-color: black">
