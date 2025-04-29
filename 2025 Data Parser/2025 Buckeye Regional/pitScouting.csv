@@ -1,0 +1,57 @@
+Event,Team number,Width,Length,Weight,Drivetrain,Other Drivetrain,Swerve Ratio,Drivetrain Motor,Batteries,Pickup Floor Coral,Pickup Floor Algae,How To Feed Robot,Autos,Scouting Method,comment,Fish-like,Fish-like explaination,Survive Water Game,Water Game Explaination
+2025ohcl,2603,34,41,126,Swerve,,2,Neo,12,N,N,Horizontal,2 L4,form,,Y,it can breathe under water,Y,vibe 
+2025ohcl,10582,33,33,90,Swerve,,o,Neo,6,Y,Y,Vertical,none,none,,N,,N,
+2025ohcl,3193,36,36,130,Swerve,,3,Kraken,12,N,Y,Vertical,1 L4,paper,,Y,under water vibe,N,
+2025ohcl,3015,36,36,130,Swerve,,1,Kraken,20,Y,Y,Other,3 corals ,app,,Y,loves to hit sankoes ,N,
+2025ohcl,3777,36,36,60,Tank,,x,Other,3,N,N,Other,,,,N,,N,
+2025ohcl,3484,33,33,128,Swerve,,2,Kraken,9,N,N,Vertical,taxi,app,,N,,Y,
+2025ohcl,3260,32,32,129.4,Swerve,,2,Other,10,Y,Y,Horizontal,L4,app,,Y,from an ange,Y,
+2025ohcl,48,27,32,115,Swerve,,3,Kraken,10,Y,Y,Horizontal,l4,pit and match,,N,,N,
+2025ohcl,120,32,32,119,Swerve,,3,Kraken,9,N,N,Vertical,move,pits and match ,,N,no,N,no
+2025ohcl,128,35,35,115,Swerve,,o,Neo,9,N,N,Vertical,l4,none,,N,,N,
+2025ohcl,291,31,31,112,Swerve,,3,Neo,10,N,N,Vertical,drive,match only,,N,,N,
+2025ohcl,677,35,35,107,Swerve,,o,Neo,6,N,N,Horizontal,every level,both,,N,,N,
+2025ohcl,695,31,31,113,Swerve,,1,Kraken,9,N,N,Vertical,l4,both,,N,,N,
+2025ohcl,1308,32,32,100,Swerve,,3,Kraken,6,N,Y,Other,l1,both,,N,,N,
+2025ohcl,1405,35,35,134,Swerve,,3,Falcon,8,N,N,Either,3 piece from left right position,lovet,,N,,N,
+2025ohcl,1559,29.5,29.5,110,Swerve,,3,Kraken,10,N,N,Vertical,"1,2,maybe 3",own app,,N,,N,
+2025ohcl,1787,27,27,706,Swerve,,o,Kraken,11,Y,N,Vertical,3 l4,Google form,measurements are without bumpers,N,,Y,
+2025ohcl,10303,28,28,104,Swerve,,o,Neo,3,N,Y,Vertical,1 coral ,sheets,first year ratio unknown,N,,N,
+2025ohcl,2228,32,28,114,Swerve,,o,Falcon,7,N,Y,Either,"2 croral L4, or 2 coral L 4 and process er 2","table for scouting, excel sheet","7 to 1 swerve ratio, robot named sigma",N,,N,
+2025ohcl,1511,31,28,113,Swerve,,3,Kraken,12,N,Y,Vertical,"2L4, or 1L4 and  net",own software,,N,,N,
+2025ohcl,2252,28,28,114.4,Swerve,,3,Kraken,13,Y,N,Horizontal,3 coral L4,they do scouting with a software,measurements without bumpers ,N,,N,
+2025ohcl,2172,35,38,112,Swerve,,o,Kraken,7,N,N,Vertical,"consistent 1 L4, untested 3 L4",no organized method,6.11 to 1,N,,N,
+2025ohcl,4601,35,35,115,Swerve,,3,Kraken,10,N,N,Vertical,,,"human player station pickup, can pickup algae if pinned against the wall"
+2025ohcl,4145,33,33,109.6,Swerve,,3,Kraken,12,N,N,Vertical,3 L4's or 1 L4 depending on position,has their own app,"hits L4, takes from reef and human player station"
+2025ohcl,4085,33,33,109.9,Swerve,,2,Falcon,6,N,N,Vertical,1 L3 ,people record match data w/ Vscouter app,"L4, not climb or algae, human player station pickup"
+2025ohcl,3954,39,33,102,Tank,,x,CIM,7,N,Y,Vertical,1 L1,scouts with paper,"human player station pickup, L1 - L3, can pickup algae on ground but prefers reef"
+2025ohcl,4269,33,33,113.7,Swerve,,1,Neo,9,N,Y,Vertical,taxis ,scouting app,"L2-L4, 10 second cycle, has no vision "
+2025ohcl,4121,37,37,114.8,Swerve,,2,Kraken,9,N,N,Either,1 L4 and running an L3 test during match,scout radios?,"deep cage climb, has vision"
+2025ohcl,4050,30,28,110,Mechanum,,x,Neo,6,N,N,Vertical,1 L4,has their own app and tablets ,"L2-L4, no climb,"
+2025ohcl,10208,30,32,100,Mechanum,,x,Neo,10,N,N,Vertical,1 L1,no scouting,"reef only, scores net"
+2025ohcl,9545,36,40,130,Swerve,,3,Kraken,7,N,N,Either,,taxi,,N,,N,
+2025ohcl,8243,36,36,113,Swerve,,3,Neo,6,N,Y,Vertical,l1,pit,
+2025ohcl,7885,33,37,110,Swerve,,1,Neo,7,N,N,Vertical,not yet,pit,they hope to make it leave the line soon
+2025ohcl,7717,36,36,114.5,Swerve,,o,Neo,3,N,N,Vertical,l3,pits and match,
+2025ohcl,8222,36,36,102,Other,,3,Kraken,12,N,N,Vertical,move,no,
+2025ohcl,8140,31,36,99,Mechanum,,o,Neo,4,N,N,Vertical,l1,both,
+2025ohcl,8145,31.25,31.25,117,Swerve,,3,Kraken,10,N,N,Vertical,move,both,
+2025ohcl,8393,33,33,113.7,Swerve,,o,Kraken,7,Y,Y,Other,l4,match,didn't know gear ratio
+2025ohcl,8718,31,36,98,Swerve,,1,Neo,9,N,N,Vertical,no but they make a leve,paper pen,L2 algae score on all levels ,N,,N,
+2025ohcl,9643,36,40,85,Tank,,x,Neo,4,N,N,Vertical,leave ,pen paper,auto eaves removes algae can score l1 2 and 3,Y,floppy scorer linear actuator score,N,
+2025ohcl,9194,29,29,95,Swerve,,o,Neo,4,N,N,Vertical,just leves for now they try for l4,none,,N,,N,
+2025ohcl,2399,35,37,127,Swerve,,4,Neo,8,N,N,Vertical,2 piece l4,,,N,,N,
+2025ohcl,4991,31,31,129.9,Swerve,,o,Neo,12,N,Y,Vertical,2 coral,scout radioz ,medium speed swere,N,,N,
+2025ohcl,6964,32.5,32.5,129.6,Swerve,,2,Kraken,7,N,Y,Vertical,2-3 L4 from left ,dragon scout,weight w/o batteries ,N,,N,
+2025ohcl,4611,27,27,109,Swerve,,2,Kraken,9,N,Y,Either,3.5 coral,app,,N,,N,
+2025ohcl,5740,28.5,31,113,Swerve,,3,Kraken,7,N,N,Vertical,"ef right 3L4, center 1L4 one net",scout radioz,,N,,N,
+2025ohcl,10207,30,30,103,Tank,,x,Neo,11,N,Y,Horizontal,middle leave l1,no organized method,kit bot,N,,N,
+2025ohcl,9139,35,35,103,Swerve,,3,Kraken,5,N,N,Vertical,none,Google form,,N,,N,
+2025ohcl,9653,36,26,87,Tank,,x,Neo,4,N,Y,Horizontal,taxi,Google form,,N,,N,
+2025ohcl,9767,31,35,122,Swerve,,2,Kraken,5,N,N,Vertical,taxi,pen paper,,N,,N,
+2025ohcl,6181,35,30,133,Swerve,,1,Neo,7,N,N,Vertical,algae and one coral ,form ,,N,,N,
+2025ohcl,9622,36,36,108,Swerve,,3,Neo,3,N,Y,Horizontal,taxi,form ,,N,,N,
+2025ohcl,5413,30,31,125,Swerve,,4,Neo,14,N,N,Horizontal,2 L4,form ,,N,,Y,
+2025ohcl,7165,35,35,96,Swerve,,3,Falcon,12,N,N,Vertical,taxi ,form,,Y,good anchor ,Y,survived anything so far
+2025ohcl,8713,34.5,41,110,Tank,,x,Neo,5,N,Y,Horizontal,none,none,,N,,N,
+2025ohcl,3173,32.5,32.5,130,Swerve,,1,Kraken,9,N,Y,Vertical,4 piece l4,scouting pass,cracked,N,,N,

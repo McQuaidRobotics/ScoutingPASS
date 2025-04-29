@@ -1,0 +1,55 @@
+Event,Team number,Width,Length,Weight,Drivetrain,Other Drivetrain,Swerve Ratio,Drivetrain Motor,Batteries,Pickup Floor Coral,Pickup Floor Algae,How To Feed Robot,Autos,Scouting Method,comment
+2025nyro,7903,31,27,0,Swerve,,o,Falcon,6,N,N,Vertical,none,"not yet, some match scouting","14 to 50 17 to 50, just drivebase"
+2025nyro,8140,27,32,90,Mechanum,,x,Neo,5,N,N,Vertical,move forward and drop and just move ,some ,one of few wwirh mechinum
+2025nyro,9622,25,25,105,Swerve,,o,Neo,3,N,Y,Horizontal,drives out,"pot scouting, some during match",ratio 1 to 3 and 1 to4
+2025nyro,9643,1,1,1,Tank,,x,,2,Y,N,Vertical,"drive, beyond that not aure",not today ,good at defence
+2025nyro,340,30,30,114,Swerve,,2,Kraken,12,Y,Y,Either,3l4,,
+2025nyro,271,32,28,106,Tank,,3,Kraken,10,N,Y,Other,none,,no autos and no coral pickup at all only algae
+2025nyro,250,30,30,104,Swerve,,2,Neo,6,N,N,Horizontal,has an auto but not working,,"uses pneumatics, shallow climb, gets algae from reef, coral from station"
+2025nyro,229,26,26,105,Tank,,x,Neo,6,N,N,Vertical,just drive forward,,"unsure about weight, L1 and L2 coral"
+2025nyro,20,29,29,114.5,Swerve,,o,Other,20,N,Y,Either,,,"uses Neos, vortexs, and krakens, unsure of ratios"
+2025nyro,1511,28,31,114.1,Swerve,,3,Kraken,12,N,N,Either,,,gets coral from station 
+2025nyro,10223,26.5,32.3125,80,Tank,,x,CIM,9,N,N,Horizontal,none,,kitbot
+2025nyro,191,27,27,114,Swerve,,3,Kraken,6,N,Y,Horizontal,,,very busy and not many direct questions were asked
+2025nyro,1518,0,0,127,Swerve,,o,Falcon,2,N,Y,Vertical,not working but if it works then it goes forwRDS,they scount matches,can score in the barge
+2025nyro,2340,0,0,95,Swerve,,2,Neo,8,N,Y,Vertical,can score coRAL AND ALGEA,Google form,basic dimensions and they do whatever for their autos that their alliance needs
+2025nyro,2228,28,32,114,Swerve,,2,Falcon,7,N,Y,Vertical,three autos one to three lfours,zoho forms,scores in the barge and driver is touch screen 
+2025nyro,1591,27,27,115,Swerve,,3,Kraken,16,N,Y,Vertical,three one piece two and half piece and three piece,Google form,"3 auto is iffy, 2.5 is good"
+2025nyro,1507,33,33,113,Swerve,,o,Kraken,9,N,Y,Vertical,one piece two piece,scouting app,
+2025nyro,2010,29,29,86,Swerve,,2,Kraken,7,N,Y,Vertical,three get out of the station and score in troff,computers and spreadsheet,neat wiring
+2025nyro,1787,27,27,103,Swerve,,o,Kraken,9,Y,Y,Vertical,two or three but hopefully four,scoutingpass,they have an algorithm for scouting
+2025nyro,1585,27,32,107,Tank,,x,CIM,1,N,N,Vertical,one to leave ,binder,
+2025nyro,1126,30,30,114.5,Swerve,,3,Neo,14,N,Y,Vertical,"2 L1right, middle left and right 1",scouting pass,
+2025nyro,695,20,20,113,Swerve,,1,Kraken,9,N,N,Either,2 L4 coral,scouting pass,
+2025nyro,639,30,30,114.7,Swerve,,4,Neo,8,N,Y,Vertical,none,googleform,
+2025nyro,1405,29,29,114.1,Swerve,,o,Kraken,12,N,N,Vertical,idk,scouting app,don't know ratio
+2025nyro,564,29,29,113,Swerve,,1,Kraken,10,N,N,Vertical,idk,Google forn,
+2025nyro,424,28,28,124.5,Swerve,,3,Kraken,9,N,N,Horizontal,2 coral 1algae,googleform,
+2025nyro,578,28.5,28.5,113,Swerve,,4,Kraken,6,N,N,Vertical,drive forward,own app,
+2025nyro,1308,28,28,96.9,Swerve,,o,Kraken,5,N,Y,Other,move,googke doc,"don't know ratio, algae only dobot"
+2025nyro,533,27,32,110,Swerve,,4,Kraken,7,N,Y,Horizontal,"score 1 coral, move",Google form,
+2025nyro,378,26,27,95,Swerve,,2,Neo,6,N,Y,Vertical,remove1algaeplace1coral,Google form,
+2025nyro,8393,27,27,115,Swerve,,3,Kraken,7,Y,Y,Other,1 coarl l4 ,"no pit, feild",very coarl optimised thiklnk it is mostly mentor built
+2025nyro,8243,29.5,29.5,95,Swerve,,o,Neo,6,N,Y,Vertical,"l1 left right mid, possibly 2 cycles",nope,"12 to 1, it's a cat"
+2025nyro,3003,25.5,30,112.2,Swerve,,2,Neo,12,N,Y,Vertical,1 L4,"tablets, spreadsheets pit & field scouting ","6 hours with champ driver, reliable deep climb "
+2025nyro,2614,23,23,130,Swerve,,4,Kraken,12,N,Y,Vertical,L4 2 & L2,pit scouting & field scouting ,40 hour driving
+2025nyro,3015,29,29,114.05,Swerve,,3,Kraken,20,N,Y,Horizontal,3 L4 coral,pit scouting & field scouting,"ability to deep climb, 120 hours of drive practice"
+2025nyro,3171,29,29,105,Swerve,,o,Neo,14,N,N,Vertical,record what drivers do,RLD input app,"no climb, don't know their ratio"
+2025nyro,3181,29.5,29.5,115,Swerve,,3,Neo,9,N,N,Vertical,taxi & L2,"spreadsheets, pit scouting, field scouting",
+2025nyro,3799,29,29,110,Swerve,,3,Neo,12,N,Y,Vertical,pathfinder ,pitfield spreadsheet ,
+2025nyro,7165,26,26,93.4,Swerve,,1,Falcon,11,N,N,Vertical,leave zone,scoutradios,teams launching satelitte
+2025nyro,6868,36,36,105,Swerve,,4,Other,12,N,Y,Vertical,can get out,paper,lime light
+2025nyro,5881,32,27,90,Swerve,,1,Neo,10,N,N,Vertical,leave line,no,
+2025nyro,4611,27,27,117,Swerve,,4,Falcon,9,Y,N,Vertical,leav 3 pc l4,,every level
+2025nyro,5590,30,30,107,Swerve,,4,Neo,9,N,N,Vertical,can leave,Google form,
+2025nyro,6621,29,29,100,Swerve,,2,Kraken,4,N,N,Vertical,score l4,no,no algea deep climb 
+2025nyro,6911,39,41,107,Swerve,,2,Kraken,20,N,Y,Vertical,leave can get 2 in L4,rdl input,
+2025nyro,3838,30,30,86,Swerve,,2,Neo,9,N,N,Vertical,atleast 1 L4,Pit and field scouting,
+2025nyro,2791,32,32,120,Swerve,,o,Neo,8,N,N,Vertical,"drive, l4","pit scout, feels scout","use beam breaks to detect game price and corrects, maxswerve highest speed from base cit, 4.7 to 1"
+2025nyro,2252,28,28,110,Swerve,,3,Kraken,15,Y,N,Horizontal,"2 3score, l4x3",pit and feild,helpfully if needed
+2025nyro,3044,29.5,29.5,115,Swerve,,2,Neo,10,N,N,Vertical,"2 l4, all ls possible, very flexible",pot and feild,"has retro ltt screwdriver, auto cycle in telephone possible"
+2025nyro,1559,29.5,29.5,107,Swerve,,3,Falcon,10,N,Y,Vertical,"not tested, can leave",pit and feild,crackers for drive
+2025nyro,3951,29.5,29.5,114.7,Swerve,,o,Neo,7,N,Y,Vertical,"4, l 2 or 3 drop-off, grab algie",feild,"3 to 1 4 to 1, deep climb,"
+2025nyro,4930,30,30,114.7,Swerve,,2,Kraken,15,N,N,Either,l2 configurable,"pit, feild",Richard mango is the gratest
+2025nyro,3004,27,32,62.4,Tank,,x,Other,3,N,N,Horizontal,drive l1,nope,Andy mark motors
+2025nyro,3173,26,26,115,Swerve,,3,Kraken,10,N,Y,Vertical,2 piece l4 ,scotpass,
